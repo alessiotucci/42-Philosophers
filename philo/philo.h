@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 11:24:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/05 11:49:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,7 @@
 # define BG_CYAN         "\033[46m"
 # define BG_YELLOW       "\033[43m"
 # define BG_RED          "\033[41m"
+
+/* one useful function*/
+int	ft_isdigit(int argum);
 #endif
