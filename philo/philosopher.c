@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 12:56:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/05 13:28:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ int	main(int ac, char *av[])
 {
 	int	count;
 	t_philo	test;
+	int	flag;
 
+	flag = 0;
 	count = 1;
 	if (ac < 5 || ac > 6)
 		return (printf("%s Wrong input %s\n", RED, RESET));
-	while (count <= 4)
+	while (count <= 5)
 	{
+		if (av[count])
 		(check_for_digits(av[count]));
 		count++;
 	}
@@ -47,7 +50,10 @@ int	main(int ac, char *av[])
 	test.time_to_eat = ft_atoi(av[3]);
 	test.time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
+	{
 	test.often_eat = ft_atoi(av[5]);
-	print_struct(&test);
+	flag = 1;
+	}
+	print_struct(&test, flag);
 	return (0);
 }

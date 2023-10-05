@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 12:26:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/05 13:27:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ typedef struct s_philo
 int	ft_isdigit(int argum);
 int	ft_atoi(const char *str);
 /* this function is for printing debugg*/
-void print_struct(t_philo *philo);
+void print_struct(t_philo *philo, int flag);
 #endif
