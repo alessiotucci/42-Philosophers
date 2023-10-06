@@ -11,5 +11,46 @@ The Dining Philosopher Problem states that K philosophers are seated around a ci
 
 
 
+# Allowed Function 
+
+## Library: string.h
+
+| Function | Prototype |
+|----------|-----------|
+| memset   | `void *memset(void *s, int c, size_t n);` |
+
+## Library: stdio.h
+
+| Function | Prototype                                      |
+|----------|------------------------------------------------|
+| printf   | `int printf(const char *format, ...);`          |
+
+## Library: stdlib.h
+
+| Function | Prototype                          |
+|----------|------------------------------------|
+| malloc   | `void *malloc(size_t size);`        |
+| free     | `void free(void *ptr);`             |
+
+## Library: unistd.h
+
+| Function   | Prototype                                |
+|------------|------------------------------------------|
+| write      | `ssize_t write(int fd, const void *buf, size_t count);` |
+| usleep     | `int usleep(useconds_t usec);`            |
+| gettimeofday | `int gettimeofday(struct timeval *tv, struct timezone *tz);` |
+
+## Library: pthread.h
+
+| Function           | Prototype                                      |
+|--------------------|------------------------------------------------|
+| pthread_create     | `int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);` |
+| pthread_detach     | `int pthread_detach(pthread_t thread);`          |
+| pthread_join       | `int pthread_join(pthread_t thread, void **retval);` |
+| pthread_mutex_init | `int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);` |
+| pthread_mutex_destroy | `int pthread_mutex_destroy(pthread_mutex_t *mutex);` |
+| pthread_mutex_lock | `int pthread_mutex_lock(pthread_mutex_t *mutex);` |
+| pthread_mutex_unlock | `int pthread_mutex_unlock(pthread_mutex_t *mutex);` |
+
 
 
