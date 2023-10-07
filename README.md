@@ -29,8 +29,8 @@ Those are the only function I am allowed to use in this project.
 | Function                   | Library                  | Prototype                                       |  video    |
 |----------------------------|--------------------------|-------------------------------------------------|-----------|
 | usleep                     | unistd.h                 | int usleep(useconds_t usec);                   |[![](https://ytcards.demolab.com/?id=SjOPUr7Bkmo&ab_channel=PortfolioCourses&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "")](https://youtu.be/SjOPUr7Bkmo?feature=shared)
+| gettimeofday               | sys/time.h               | int gettimeofday(struct timeval *tv, struct timezone *tz); |[![](https://ytcards.demolab.com/?id=Qoed2uBwF_o&ab_channel=PortfolioCourses&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "")](https://youtu.be/Qoed2uBwF_o?feature=shared) |
 
-| gettimeofday               | sys/time.h               | int gettimeofday(struct timeval *tv, struct timezone *tz); |
 
 <br>
 
