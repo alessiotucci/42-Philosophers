@@ -26,12 +26,35 @@ Those are the only function I am allowed to use in this project.
 
 <br>
 
+---
+
+
 | Function                   | Library                  | Prototype                                       |  video    |
 |----------------------------|--------------------------|-------------------------------------------------|-----------|
 | usleep                     | unistd.h                 | int usleep(useconds_t usec);                   |[![](https://ytcards.demolab.com/?id=SjOPUr7Bkmo&ab_channel=PortfolioCourses&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "")](https://youtu.be/SjOPUr7Bkmo?feature=shared)
 | gettimeofday               | sys/time.h               | int gettimeofday(struct timeval *tv, struct timezone *tz); |[![](https://ytcards.demolab.com/?id=cunJcNgtxMk "")](https://youtu.be/cunJcNgtxMk?feature=shared) |
+<br>
 
+## Conversion inside the `my_get_time`
 
+| Variable | Unit         | Description                        | Conversion to Milliseconds (ms) |
+|----------|--------------|------------------------------------|---------------------------------|
+| `tv_sec` | Seconds (s)  | Whole seconds since the epoch     | `tv_sec * 1000`                 |
+| `tv_usec`| Microseconds (μs) | Fractional seconds (microseconds) | `tv_usec / 1000`                |
+
+- `tv_sec` represents the number of whole seconds since the Unix epoch (January 1, 1970).
+- `tv_usec` represents the number of microseconds, which is a fraction of a second.
+
+To convert these values to milliseconds:
+
+- For `tv_sec`, you multiply it by 1000 because there are 1000 milliseconds in a second.
+- For `tv_usec`, you divide it by 1000 to convert microseconds to milliseconds.
+
+This conversion is often used when working with time-related data in C, as it allows you to work with consistent units (milliseconds) for various time-related calculations.
+
+<br> 
+<br>
+---
 <br>
 
 | Function                   | Library                  | Prototype                                       |
