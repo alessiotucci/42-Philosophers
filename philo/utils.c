@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 12:09:34 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 12:27:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,13 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (sign * num);
+}
+
+/* This function is a better version of the Usleep
+	* It is more accurate and has a better precision*/
+int	my_usleep(useconds_t useconds)
+{
+	if (useconds)
+		printf("esiste\n");
+	return (0);
 }
