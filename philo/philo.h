@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 13:27:22 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 13:51:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ typedef struct s_philo
 /* utils function */
 int	ft_isdigit(int argum);
 int	ft_atoi(const char *str);
+/* modified version of time.h function*/
+int	my_usleep(u_int64_t interlude);
+u_int64_t	my_get_time(void);
 /* this function is for printing debugg*/
 void print_struct(t_philo *philo, int flag);
 #endif

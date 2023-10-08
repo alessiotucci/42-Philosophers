@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 12:27:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 13:49:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,26 @@ int	ft_atoi(const char *str)
 	return (sign * num);
 }
 
+/*The gettimeofday() function gets the system’s clock time*/
+/*The current time is expressed in elapsed seconds and microseconds since
+	* 00:00:00, January 1, 1970 (Unix Epoch).*/
+u_int64_t	my_get_time(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		return (printf("error with the gettimeofday()\n"));
+	return ((time.tv_sec * (u_int64_t)1000) + (time.tv_usec / 1000));
+}
+
 /* This function is a better version of the Usleep
 	* It is more accurate and has a better precision*/
-int	my_usleep(useconds_t useconds)
+int	my_usleep(u_int64_t interlude)
 {
-	if (useconds)
-		printf("esiste\n");
+	u_int64_t	start;
+
+	start = my_get_time();
+	while ((my_get_time() - start) < interlude)
+		usleep(interlude / 100);
 	return (0);
 }
