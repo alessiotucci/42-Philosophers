@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 15:44:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:37:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int	main(int ac, char *av[])
 		flag = 1;
 	}
 	print_struct(&test, flag);
+	lay_the_table();
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:09:19 by atucci            #+#    #+#              #
-#    Updated: 2023/10/05 12:21:00 by atucci           ###   ########.fr        #
+#    Updated: 2023/10/08 16:42:21 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ NAME = philo
 SRC = ./philosopher.c \
 						./utils.c \
 						./debug_print.c \
+						./lay_the_table.c \
+						./routine.c \
 #------------------------------------------------------------------------------
 # Setting the variables object to a list of object neede to build from the src
 OBJS = $(SRC:.c=.o)

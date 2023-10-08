@@ -6,8 +6,20 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 15:58:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:36:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "philo.h"
 
+int	create_name_philos(void)
+{
+	return (1);
+}
+
+
+
+int	lay_the_table(void)
+{
+	return (0);
+}

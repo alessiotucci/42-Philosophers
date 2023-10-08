@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 14:34:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:37:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,17 @@ typedef struct s_input
 typedef struct s_plato
 {
 	pthread_t		thread;
-	int		numb;
+	int		name;
+	int		meal_eaten;
+	size_t		last_time_eat;
+	size_t		time_to_die;
+	size_t		time_to_eat;
+	size_t		time_to_sleep;
 }		t_plato;
 /* the table where the philosopher are sitting*/
 typedef struct s_table
 {
-	t_plato		*plato;
+	t_plato		*philly;
 }		t_table;
 /* utils function */
 int	ft_isdigit(int argum);
@@ -70,6 +75,8 @@ int	ft_atoi(const char *str);
 /* modified version of time.h function*/
 int	my_usleep(u_int64_t interlude);
 u_int64_t	my_get_time(void);
+/* lay the tables means gathering data off all the philos and forks*/
+int	lay_the_table(void);
 /* this function is for printing debugg*/
 void print_struct(t_input *commmand, int flag);
 #endif
