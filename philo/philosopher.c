@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/05 13:28:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:44:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static int	check_for_digits(char *str)
 		}
 		count++;
 	}
-return (1);
+	return (1);
 }
 
 int	main(int ac, char *av[])
 {
-	int	count;
-	t_philo	test;
-	int	flag;
+	int		count;
+	t_input	test;
+	int		flag;
 
 	flag = 0;
 	count = 1;
@@ -42,7 +42,7 @@ int	main(int ac, char *av[])
 	while (count <= 5)
 	{
 		if (av[count])
-		(check_for_digits(av[count]));
+			(check_for_digits(av[count]));
 		count++;
 	}
 	test.how_many = ft_atoi(av[1]);
@@ -51,8 +51,8 @@ int	main(int ac, char *av[])
 	test.time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
 	{
-	test.often_eat = ft_atoi(av[5]);
-	flag = 1;
+		test.often_eat = ft_atoi(av[5]);
+		flag = 1;
 	}
 	print_struct(&test, flag);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 13:51:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:34:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,25 @@
 # define BG_RED          "\033[41m"
 
 /* this for testing */
-typedef struct s_philo
+typedef struct s_input
 {
 	int	how_many;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	often_eat;
-}		t_philo;
-
+}		t_input;
+/**/
+typedef struct s_plato
+{
+	pthread_t		thread;
+	int		numb;
+}		t_plato;
+/* the table where the philosopher are sitting*/
+typedef struct s_table
+{
+	t_plato		*plato;
+}		t_table;
 /* utils function */
 int	ft_isdigit(int argum);
 int	ft_atoi(const char *str);
@@ -61,5 +71,5 @@ int	ft_atoi(const char *str);
 int	my_usleep(u_int64_t interlude);
 u_int64_t	my_get_time(void);
 /* this function is for printing debugg*/
-void print_struct(t_philo *philo, int flag);
+void print_struct(t_input *commmand, int flag);
 #endif
