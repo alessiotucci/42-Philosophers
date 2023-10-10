@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 15:36:47 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 13:56:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,27 @@ if (phil->time_to_sleep < 0)
 	printf("%sThe input has been checked%s\n", GREEN, RESET);
 	return (0);
 }
+
+/**/
+void	print_table(t_table *new_table)
+{
+	int	count;
+
+	count = 0;
+	printf("\n\n-----------NEW TABLE -------------\n");
+	printf("|%sTable size is for [%d] philosphers%s|\n", BG_GREEN,new_table->philly_size, RESET);
+	while (count < new_table->philly_size)
+	{
+		if (count % 2)
+			printf("|\t%sPhilospher Name: %d%s\t   |\n",CYAN, new_table->philly[count].name, BG_RESET);
+		else
+			printf("|\t%sPhilospher Name: %d%s\t   |\n",YELLOW, new_table->philly[count].name, BG_RESET);
+	count++;
+	}
+
+}
+
+
 void	print_struct(t_input *philo, int flag)
 {
 	if (check_input(philo) == 0)

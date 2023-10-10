@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 12:51:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 13:34:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char *av[])
 	int		count;
 	t_input	test;
 	int		flag;
-
+	t_table	nice_table;
 	flag = 0;
 	count = 1;
 	if (ac < 5 || ac > 6)
@@ -52,6 +52,7 @@ int	main(int ac, char *av[])
 		flag = 1;
 	}
 	print_struct(&test, flag);
-	lay_the_table();
+	lay_the_table(&test, &nice_table);
+	print_table(&nice_table);
 	return (0);
 }

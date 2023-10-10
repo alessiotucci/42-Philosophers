@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 12:42:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:57:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	my_usleep(u_int64_t interlude)
 		usleep(interlude / 100);
 	return (0);
 }
-
+/*This function is mainly for parsing the argumetns*/
 void	parsing_argus(t_input *params, char *av[])
 {
 	params->how_many = ft_atoi(av[1]);

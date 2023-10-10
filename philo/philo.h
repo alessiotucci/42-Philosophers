@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 12:43:24 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 13:35:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_plato
 typedef struct s_table
 {
 	t_plato		*philly;
+	int		philly_size;
 }		t_table;
 /* utils function */
 int	ft_isdigit(int argum);
@@ -76,8 +77,10 @@ int	ft_atoi(const char *str);
 int	my_usleep(u_int64_t interlude);
 u_int64_t	my_get_time(void);
 /* lay the tables means gathering data off all the philos and forks*/
-int	lay_the_table(void);
+int	lay_the_table(t_input *params, t_table *new_table);
+int	create_name_philos(t_table *new_table);
 /* this function is for printing debugg*/
 void print_struct(t_input *commmand, int flag);
+void	print_table(t_table *new_table);
 void	parsing_argus(t_input *params, char *av[]);
 #endif
