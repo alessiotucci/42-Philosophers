@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 13:35:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:40:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_table
 {
 	t_plato		*philly;
 	int		philly_size;
+	size_t		time_to_die;
+	size_t		time_to_eat;
+	size_t		time_to_sleep;
 }		t_table;
 /* utils function */
 int	ft_isdigit(int argum);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 13:56:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:53:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ void	print_table(t_table *new_table)
 	while (count < new_table->philly_size)
 	{
 		if (count % 2)
-			printf("|\t%sPhilospher Name: %d%s\t   |\n",CYAN, new_table->philly[count].name, BG_RESET);
+			printf("\n|%s******* Philospher Name: %d ***%s********|\n",CYAN, new_table->philly[count].name, BG_RESET);
 		else
-			printf("|\t%sPhilospher Name: %d%s\t   |\n",YELLOW, new_table->philly[count].name, BG_RESET);
+			printf("\n|%s******* Philospher Name: %d %s***********|\n",YELLOW, new_table->philly[count].name, BG_RESET);
+			printf("|\tPhilospher meal eaten->%d\t|\n", new_table->philly[count].meal_eaten);
+			printf("|\tPhilospher time to die%zu\t|\n", new_table->philly[count].time_to_die);
+			printf("|\tPhilospher time to eat%zu\t|\n", new_table->philly[count].time_to_eat);
+			printf("|\tPhilospher time to sleep%zu\t|\n", new_table->philly[count].time_to_sleep);
 	count++;
 	}
 
