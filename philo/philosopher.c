@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 17:37:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:51:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ int	main(int ac, char *av[])
 			(check_for_digits(av[count]));
 		count++;
 	}
-	test.how_many = ft_atoi(av[1]);
-	test.time_to_die = ft_atoi(av[2]);
-	test.time_to_eat = ft_atoi(av[3]);
-	test.time_to_sleep = ft_atoi(av[4]);
+	parsing_argus(&test, av);
 	if (av[5])
 	{
 		test.often_eat = ft_atoi(av[5]);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 17:37:02 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:43:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ u_int64_t	my_get_time(void);
 int	lay_the_table(void);
 /* this function is for printing debugg*/
 void print_struct(t_input *commmand, int flag);
+void	parsing_argus(t_input *params, char *av[]);
 #endif

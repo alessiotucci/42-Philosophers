@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/08 13:49:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:42:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,12 @@ int	my_usleep(u_int64_t interlude)
 	while ((my_get_time() - start) < interlude)
 		usleep(interlude / 100);
 	return (0);
+}
+
+void	parsing_argus(t_input *params, char *av[])
+{
+	params->how_many = ft_atoi(av[1]);
+	params->time_to_die = ft_atoi(av[2]);
+	params->time_to_eat = ft_atoi(av[3]);
+	params->time_to_sleep = ft_atoi(av[4]);
 }
