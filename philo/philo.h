@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 14:40:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/10 15:12:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,6 @@ int	create_name_philos(t_table *new_table);
 void print_struct(t_input *commmand, int flag);
 void	print_table(t_table *new_table);
 void	parsing_argus(t_input *params, char *av[]);
+void	start_routine(t_plato *the_array, int how_many);
+void	*routing(void *argum);
 #endif
