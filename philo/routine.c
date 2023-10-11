@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 15:12:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 09:46:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_routine(t_plato *the_array, int how_many)
 	count = 0;
 	while (count < how_many)
 	{
-	pthread_create(&the_array[count].thread, NULL, routing, NULL);
+	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
 	count++;
 	}
 	count = 0;
@@ -33,10 +33,9 @@ void	start_routine(t_plato *the_array, int how_many)
 
 void	*routing(void *argum)
 {
-	if (argum)
-		printf("esiste");
-	printf("this philospher is eating\n");
-	printf("this philospher is sleeping\n");
-	printf("this philospher is dieing\n");
+	t_plato	*philosopo;
+
+	philosopo = (t_plato *)argum;
+	printf("this philospher %d is doing his routine \n", philosopo->name);
 	return (NULL);
 }
