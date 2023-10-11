@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 11:28:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:45:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ typedef struct s_plato
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
+	// those are mutexes
+	pthread_mutex_t	state_of_philo;
+	pthread_mutex_t	meals_philo_had;
+	pthread_mutex_t	eat_last_time;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }		t_plato;
@@ -70,9 +74,11 @@ typedef struct s_plato
 typedef struct s_table
 {
 	t_plato		*philly;
+	// those are mutexes
 	pthread_mutex_t	*few_forks;
 	pthread_mutex_t	writing;
 	pthread_t		monitor;
+	//
 	int		philly_size;
 	size_t		time_to_die;
 	size_t		time_to_eat;
