@@ -6,12 +6,16 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 12:57:36 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 10:01:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
+void	free_all(t_table *old_table)
+{
+	free(old_table->philly);
+	return ;
+}
 int	ft_isdigit(int argum)
 {
 	return (argum >= 48 && argum <= 57);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/10 15:12:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 10:01:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_plato
 typedef struct s_table
 {
 	t_plato		*philly;
+	pthread_t		monitor;
 	int		philly_size;
 	size_t		time_to_die;
 	size_t		time_to_eat;
@@ -88,4 +89,6 @@ void	print_table(t_table *new_table);
 void	parsing_argus(t_input *params, char *av[]);
 void	start_routine(t_plato *the_array, int how_many);
 void	*routing(void *argum);
+/**/
+void	free_all(t_table *old_table);
 #endif
