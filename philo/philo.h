@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 10:01:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:28:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WRONG_INPUT 1
 # define MALLOC_ERROR 2
 
-# define TAKE_FORKS "has taken a fork"
+# define TAKE_FORK "has taken a fork"
 # define THINK "is thinking"
 # define SLEEP "is sleeping"
 # define EAT "is eating"
@@ -63,11 +63,15 @@ typedef struct s_plato
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 }		t_plato;
 /* the table where the philosopher are sitting*/
 typedef struct s_table
 {
 	t_plato		*philly;
+	pthread_mutex_t	*few_forks;
+	pthread_mutex_t	writing;
 	pthread_t		monitor;
 	int		philly_size;
 	size_t		time_to_die;
@@ -89,6 +93,7 @@ void	print_table(t_table *new_table);
 void	parsing_argus(t_input *params, char *av[]);
 void	start_routine(t_plato *the_array, int how_many);
 void	*routing(void *argum);
-/**/
+/* let try to be leaks free*/
 void	free_all(t_table *old_table);
+void	monitoring(void);
 #endif
