@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 12:23:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 12:43:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,27 @@ int	create_name_philos(t_table *new_table)
 	}
 	return (1);
 }
+static void	assign_forks_to_philos(t_table *table)
+{
+	int	count;
+	t_plato	*philosophi;
+	int	last_philo_index;
 
+	last_philo_index = table->philly_size - 1;
+	philosophi = table->philly;
+	// special case for the first philopher to be connected with the last one
+	philosophi[0].left_fork = &table->few_forks[0];
+	philosophi[0].right_fork = &table->few_forks[last_philo_index];
+	// we set up the fork to be shared across the table from the philosphers
+	count = 1;
+	// special case for the first philopher to be connected with the last one
+	while (count <= last_philo_index)
+	{
+	philosophi[count].left_fork = &table->few_forks[count];
+	philosophi[count].right_fork = &table->few_forks[count - 1];
+	count++;
+	}
+}
 static void	set_table_mutexes(t_table *new_table)
 {
 	int	count;
@@ -44,6 +64,7 @@ static void	set_table_mutexes(t_table *new_table)
 	count++;
 }
 		pthread_mutex_init(&new_table->writing, NULL); // this mutex will need to be destoyed
+		assign_forks_to_philos(new_table);
 }
 
 int	lay_the_table(t_input *param,t_table *new_table)

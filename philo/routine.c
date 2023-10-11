@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 11:39:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:06:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	*routing(void *argum)
 	philosopo = (t_plato *)argum;
 	// lock the mutex
 	printf("%d is doing his routine \n", philosopo->name);
+	eats(philosopo);
+	//sleep(philosopo);
+	//think(philosopo);
 	// unlock the mutex
 	return (NULL);
 }

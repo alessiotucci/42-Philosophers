@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 12:16:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:05:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,8 @@ void	*routing(void *argum);
 /* let try to be leaks free*/
 void	free_all(t_table *old_table);
 void	monitoring(void);
+/* Action of the routine*/
+void	eats(t_plato *philo);
+void	thinks(t_plato *philo);
+void	sleeps(t_plato *philo);
 #endif

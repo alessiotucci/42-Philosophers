@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:09:19 by atucci            #+#    #+#              #
-#    Updated: 2023/10/11 10:48:42 by atucci           ###   ########.fr        #
+#    Updated: 2023/10/11 12:55:53 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = ./philosopher.c \
 						./lay_the_table.c \
 						./routine.c \
 						./monitoring.c \
+						./actions_of_routine.c \
 #------------------------------------------------------------------------------
 # Setting the variables object to a list of object neede to build from the src
 OBJS = $(SRC:.c=.o)
