@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 12:43:32 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 13:46:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	create_name_philos(t_table *new_table)
 	count = 0;
 	while (count < new_table->philly_size)
 	{
+	new_table->philly[count].table = new_table;
 	new_table->philly[count].name = count + 1;
 	new_table->philly[count].meal_eaten = 0;
 	new_table->philly[count].time_to_die = new_table->time_to_die;

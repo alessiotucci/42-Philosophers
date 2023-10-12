@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 13:22:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 13:36:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_input
 /**/
 typedef struct s_plato
 {
+	struct s_table		*table;
 	pthread_t		thread;
 	int		name;
 	int		meal_eaten;
