@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 13:46:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:15:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void	assign_forks_to_philos(t_table *table)
 	count++;
 	}
 }
+
+/* the name is self descriptivie..*/
 static void	set_table_mutexes(t_table *new_table)
 {
 	int	count;
@@ -68,6 +70,7 @@ static void	set_table_mutexes(t_table *new_table)
 		assign_forks_to_philos(new_table);
 }
 
+/* Laying the table means get the struct table ready */
 int	lay_the_table(t_input *param,t_table *new_table)
 {
 	new_table->philly = (t_plato *)malloc(sizeof(t_plato) * param->how_many);// this will need to be freed
