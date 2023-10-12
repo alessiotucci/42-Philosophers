@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 09:47:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 13:24:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_table(t_table *new_table)
 			printf("|\tPhilospher will sleep%zums\t|\n", new_table->philly[count].time_to_sleep);
 	count++;
 	}
-	start_routine(new_table->philly, new_table->philly_size);
+	start_routine(new_table, new_table->philly_size);
 
 }
 
