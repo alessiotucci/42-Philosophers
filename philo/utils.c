@@ -6,11 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 10:01:14 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:32:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/* Function to free most of the stuff*/
 void	free_all(t_table *old_table)
 {
 	free(old_table->philly);
@@ -21,6 +23,7 @@ int	ft_isdigit(int argum)
 	return (argum >= 48 && argum <= 57);
 }
 
+/* atoi since we cannot use libft*/
 int	ft_atoi(const char *str)
 {
 	int	num;
@@ -78,3 +81,5 @@ void	parsing_argus(t_input *params, char *av[])
 	params->time_to_eat = ft_atoi(av[3]);
 	params->time_to_sleep = ft_atoi(av[4]);
 }
+
+/*THIS FILE ALREADY HAS 5 FUNCTIONS*/

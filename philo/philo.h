@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 14:22:07 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:04:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_plato
 	struct s_table		*table;
 	pthread_t		thread;
 	int		name;
+	int		alive;
+	int		is_eating;
 	int		meal_eaten;
 	size_t		last_time_eat;
 	size_t		time_to_die;
@@ -108,4 +110,5 @@ void	*monitoring(void *argum);
 void	eats(t_plato *philo);
 void	thinks(t_plato *philo);
 void	sleeps(t_plato *philo);
+void	console_write(t_table *table, int name, char *message);
 #endif

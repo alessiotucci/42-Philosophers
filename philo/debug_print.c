@@ -6,12 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 13:24:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:40:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* static function to check for inputs*/
 static int	check_input(t_input *phil)
 {
 	if (phil->how_many < 0)
@@ -26,7 +27,7 @@ if (phil->time_to_sleep < 0)
 	return (0);
 }
 
-/**/
+/*function to print the info abot the  table*/
 void	print_table(t_table *new_table)
 {
 	int	count;
@@ -50,7 +51,7 @@ void	print_table(t_table *new_table)
 
 }
 
-
+/**/
 void	print_struct(t_input *philo, int flag)
 {
 	if (check_input(philo) == 0)
@@ -65,4 +66,15 @@ void	print_struct(t_input *philo, int flag)
 		printf("not specifies how often to eat\n");
 	}
 	return ;
+}
+
+void	console_write(t_table *table, int name, char *message)
+{
+	u_int64_t	time;
+
+	time = my_get_time() - table->time_of_start;
+	pthread_mutex_lock(&table->writing);
+	printf("%llu %d %s\n", time, name, message);
+	pthread_mutex_unlock(&table->writing);
+
 }
