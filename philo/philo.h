@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 15:04:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:17:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@ typedef struct s_table
 	// those are mutexes
 	pthread_mutex_t	*few_forks;
 	pthread_mutex_t	writing;
-	//
+	//this is the monitor thread and needs some var
+	//to keep checking the philospher sitted at the table
 	pthread_t		monitor;
+	//
 	int		philly_size;
 	size_t		time_to_die;
 	size_t		time_to_eat;
