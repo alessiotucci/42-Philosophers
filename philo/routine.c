@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 14:22:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:28:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*routing(void *argum)
 	//printf("%d is doing his routine \n", philosopo->name);
 	eats(philosopo);
 	sleeps(philosopo);
-//	thinks(philosopo);
+	thinks(philosopo);
 	// unlock the mutex
 	return (NULL);
 }

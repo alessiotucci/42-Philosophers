@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 14:15:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:22:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	lay_the_table(t_input *param,t_table *new_table)
 		printf("memory allocation failed\n");
 	else
 		printf("%sAllocation was good, passing to the naming function%s\n", GREEN, RESET);
+	new_table->meals_to_eat = param->often_eat;
 	new_table->philly_size = param->how_many;
 	new_table->time_to_eat = param->time_to_eat;
 	new_table->time_to_sleep = param->time_to_sleep;

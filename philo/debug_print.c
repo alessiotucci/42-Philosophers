@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 14:40:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:25:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_table(t_table *new_table)
 			printf("|\tPhilospher will die in %zums\t|\n", new_table->philly[count].time_to_die);
 			printf("|\tPhilospher will eat%zums\t|\n", new_table->philly[count].time_to_eat);
 			printf("|\tPhilospher will sleep%zums\t|\n", new_table->philly[count].time_to_sleep);
+			printf("|\tPhilospher has to eat %d meals\t|\n", new_table->meals_to_eat);
 	count++;
 	}
 	start_routine(new_table, new_table->philly_size);

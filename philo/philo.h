@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 09:17:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:20:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_table
 	pthread_mutex_t	writing;
 	//this is the monitor thread and needs some var
 	//to keep checking the philospher sitted at the table
+	int		someone_is_dead;
+	int		enough_is_enough;
 	pthread_t		monitor;
 	//
 	int		philly_size;
@@ -89,6 +91,7 @@ typedef struct s_table
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
 	u_int64_t		time_of_start;
+	int		meals_to_eat;
 }		t_table;
 /* utils function */
 int	ft_isdigit(int argum);
