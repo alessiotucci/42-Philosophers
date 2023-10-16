@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 12:15:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:46:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	start_routine(t_table *the_table, int how_many)
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
 	count = 0;
 	// I was creating the monitor thread here previously
-	//pthread_create(&the_table->monitor, NULL, routing, &the_array);
-	pthread_create(&the_table->monitor, NULL, monitoring, &the_table);
+	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	while (count < how_many)
 	{
 	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
+	my_usleep(10);
 	count++;
 	}
 	count = 0;
@@ -48,8 +48,7 @@ void	*routing(void *argum)
 	philosopo = (t_plato *)argum;
 	the_table = (t_table *)philosopo->table;
 	// Should I create the thread to monitor here?
-	pthread_create(&the_table->monitor, NULL, monitoring, &philosopo);
-	while (!philosopo->table->someone_is_dead)// && !philosopo->table->enough_is_enough)
+	while (!philosopo->table->someone_is_dead && !philosopo->table->enough_is_enough)
 	{
 	eats(philosopo);
 	sleeps(philosopo);

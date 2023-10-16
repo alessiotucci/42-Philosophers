@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 12:17:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 14:02:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_plato
 	pthread_t		thread;
 	int		name;
 	int		alive;
-	pthread_mutex_t	meals_philo_had;
+	pthread_mutex_t	meals_lock;
 	int		is_eating;
 	int		meal_eaten;
 	size_t		last_time_eat;

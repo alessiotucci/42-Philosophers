@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/11 10:03:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 13:57:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int ac, char *av[])
 		test.often_eat = ft_atoi(av[5]);
 		flag = 1;
 	}
+	else
+		test.often_eat = 1;
 	print_struct(&test, flag);
 	lay_the_table(&test, &nice_table);
 	print_table(&nice_table);
