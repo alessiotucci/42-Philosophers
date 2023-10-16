@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 09:20:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 12:17:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ typedef struct s_plato
 	pthread_t		thread;
 	int		name;
 	int		alive;
+	pthread_mutex_t	meals_philo_had;
 	int		is_eating;
 	int		meal_eaten;
 	size_t		last_time_eat;
+	pthread_mutex_t	eat_last_time;
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
 	// those are mutexes
 	pthread_mutex_t	state_of_philo;
-	pthread_mutex_t	meals_philo_had;
-	pthread_mutex_t	eat_last_time;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }		t_plato;
@@ -77,8 +77,10 @@ typedef struct s_plato
 typedef struct s_table
 {
 	t_plato		*philly;
+	int		philly_size;
 	// those are mutexes
 	pthread_mutex_t	*few_forks;
+	pthread_mutex_t	lock_table;
 	pthread_mutex_t	writing;
 	//this is the monitor thread and needs some var
 	//to keep checking the philospher sitted at the table
@@ -86,7 +88,6 @@ typedef struct s_table
 	int		enough_is_enough;
 	pthread_t		monitor;
 	//
-	int		philly_size;
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;

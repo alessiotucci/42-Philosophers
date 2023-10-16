@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 09:28:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 12:15:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	start_routine(t_table *the_table, int how_many)
 	the_array = the_table->philly;
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
 	count = 0;
+	// I was creating the monitor thread here previously
+	//pthread_create(&the_table->monitor, NULL, routing, &the_array);
 	pthread_create(&the_table->monitor, NULL, monitoring, &the_table);
 	while (count < how_many)
 	{
@@ -34,20 +36,24 @@ void	start_routine(t_table *the_table, int how_many)
 	//printf("%d has finished their routing\n", the_array[count].name);
 	count++;
 	}
-	pthread_join(the_table->monitor, NULL);
+	// I am not sure if I need to join the monitor thread here or elsewhere
+	//pthread_join(the_table->monitor, NULL);
 }
-
 
 void	*routing(void *argum)
 {
 	t_plato	*philosopo;
+	t_table	*the_table;
 
 	philosopo = (t_plato *)argum;
-	// lock the mutex
-	//printf("%d is doing his routine \n", philosopo->name);
+	the_table = (t_table *)philosopo->table;
+	// Should I create the thread to monitor here?
+	pthread_create(&the_table->monitor, NULL, monitoring, &philosopo);
+	while (!philosopo->table->someone_is_dead)// && !philosopo->table->enough_is_enough)
+	{
 	eats(philosopo);
 	sleeps(philosopo);
 	thinks(philosopo);
-	// unlock the mutex
+	}
 	return (NULL);
 }
