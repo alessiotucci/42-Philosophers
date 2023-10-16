@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 09:25:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:58:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_struct(t_input *philo, int flag)
 	return ;
 }
 
-void	console_write(t_table *table, int name, char *message)
+u_int64_t	console_write(t_table *table, int name, char *message)
 {
 	u_int64_t	time;
 
@@ -77,5 +77,5 @@ void	console_write(t_table *table, int name, char *message)
 	pthread_mutex_lock(&table->writing);
 	printf("%llu %d %s\n", time, name, message);
 	pthread_mutex_unlock(&table->writing);
-
+	return (time);
 }

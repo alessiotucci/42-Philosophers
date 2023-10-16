@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 14:02:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:59:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ void	*monitoring(void *argum);
 void	eats(t_plato *philo);
 void	thinks(t_plato *philo);
 void	sleeps(t_plato *philo);
-void	console_write(t_table *table, int name, char *message);
+u_int64_t	console_write(t_table *table, int name, char *message);
 #endif
