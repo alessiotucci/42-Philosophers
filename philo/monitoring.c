@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 19:30:12 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:25:20 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -23,7 +23,7 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	u_int64_t	time;
 
 	time = my_get_time() - socratis->last_time_eat;
-	printf("%s--☠️ \tfunction CHECK IF DEAD%s\n", YELLOW, RESET);
+	printf("%s☠️ function CHECK IF DEAD☠️%s\n", YELLOW, RESET);
 	pthread_mutex_lock(&socratis->state_of_philo);
 		if (time >= socratis->time_to_die && !socratis->is_eating)// checking the time to die and if a philos is busy
 		{
@@ -58,7 +58,7 @@ void	*monitoring(void *param)
 	table = (t_table *) param;
 	philos = table->philly;
 	count = 0;
-	printf("%sMONITOR THREAD HAS STARTED%s\n", YELLOW, RESET);
+	printf("%s------MONITOR THREAD HAS STARTED------%s\n", YELLOW, RESET);
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 	while (table->someone_is_dead == 0 && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
 	{
