@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 12:29:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 13:15:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include <stdint.h>
 # include <stdbool.h>
 
-# define INT_MIN 2147483647
-# define INT_MAX -2147483647
+//# define INT_MIN 2147483647
+# include <limits.h>
+//# define INT_MAX -2147483647
 # define WRONG_INPUT 1
 # define MALLOC_ERROR 2
 
