@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 09:55:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:24:27 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -22,12 +22,12 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 {
 	u_int64_t	time;
 
-	time = my_get_time() - socratis->last_time_eat;
+	time = my_get_time();
 	//printf("%s☠️ function CHECK IF DEAD☠️%s\n", YELLOW, RESET);
 	pthread_mutex_lock(&socratis->state_of_philo);
 		if (time >= socratis->time_to_die && !socratis->is_eating)// checking the time to die and if a philos is busy
 		{
-		//printf("%stime[%llu] >=  time_to_die[%zu]%s\n", YELLOW, time, socratis->time_to_die, RESET);
+		printf("%stime[%llu] >=  last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
 		table->someone_is_dead = 0;
 		dying(socratis);
 		}

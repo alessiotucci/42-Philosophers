@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 09:53:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:23:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static void take_forks(t_plato *philo)
 	pthread_mutex_lock(philo->left_fork);
 	console_write(philo->table, philo->name, TAKE_FORK);
 }
+static void	drops_forks(t_plato *philo)
+{
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+}
 /* To start eating we need two forks*/
 void	eats(t_plato *philo)
 {
@@ -28,19 +33,18 @@ void	eats(t_plato *philo)
 	table = philo->table;
 	take_forks(philo);
 	// perform the action of eating for a certain amount of time
-	philo->last_time_eat = console_write(philo->table, philo->name, EAT);
+	pthread_mutex_lock(&philo->eat_last_time);
+	philo->last_time_eat = my_get_time() + philo->time_to_die;
+	console_write(philo->table, philo->name, EAT);
+	// this action should be locked right?
+	pthread_mutex_unlock(&philo->eat_last_time);
 	pthread_mutex_lock(&philo->meals_lock);
 	philo->meal_eaten++;
 //	printf("%s[%d]->meal eaten[%d]%s\n", RED,philo->name, philo->meal_eaten, RESET);
 	pthread_mutex_unlock(&philo->meals_lock);
 	//
-	pthread_mutex_lock(&philo->eat_last_time);
-	// this action should be locked right?
-	pthread_mutex_unlock(&philo->eat_last_time);
-	//
 	my_usleep(philo->time_to_eat);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	drops_forks(philo);
 }
 
 
