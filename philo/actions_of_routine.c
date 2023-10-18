@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 18:00:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 09:53:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	eats(t_plato *philo)
 	philo->last_time_eat = console_write(philo->table, philo->name, EAT);
 	pthread_mutex_lock(&philo->meals_lock);
 	philo->meal_eaten++;
-	printf("%s[%d]->meal eaten[%d]%s\n", RED,philo->name, philo->meal_eaten, RESET);
+//	printf("%s[%d]->meal eaten[%d]%s\n", RED,philo->name, philo->meal_eaten, RESET);
 	pthread_mutex_unlock(&philo->meals_lock);
 	//
 	pthread_mutex_lock(&philo->eat_last_time);
