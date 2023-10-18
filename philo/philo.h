@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 17:59:12 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:29:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdint.h>
 # include <stdbool.h>
 
+# define INT_MIN 2147483647
+# define INT_MAX -2147483647
 # define WRONG_INPUT 1
 # define MALLOC_ERROR 2
 
@@ -96,7 +98,7 @@ typedef struct s_table
 }		t_table;
 /* utils function */
 int	ft_isdigit(int argum);
-int	ft_atoi(const char *str);
+long	ft_atoi_plus(const char *str);
 /* modified version of time.h function*/
 int	my_usleep(u_int64_t interlude);
 u_int64_t	my_get_time(void);

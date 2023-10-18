@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 13:57:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:29:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	check_for_digits(char *str)
 		if (!ft_isdigit(str[count]))
 		{
 			printf("%sOnly digits please%s\n", BG_RED, RESET);
-			return (0);
+			exit(0);
+			//return (0);
 		}
 		count++;
 	}
@@ -48,7 +49,7 @@ int	main(int ac, char *av[])
 	parsing_argus(&test, av);
 	if (av[5])
 	{
-		test.often_eat = ft_atoi(av[5]);
+		test.often_eat = ft_atoi_plus(av[5]);
 		flag = 1;
 	}
 	else

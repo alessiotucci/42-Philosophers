@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/12 14:32:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:32:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,34 @@ int	ft_isdigit(int argum)
 }
 
 /* atoi since we cannot use libft*/
-int	ft_atoi(const char *str)
+long	ft_atoi_plus(const char *s)
 {
-	int	num;
-	int	sign;
-	int	i;
+	long	num;
+	long	sign;
+	int		i;
 
 	num = 0;
 	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'
+		|| s[i] == '\v' || s[i] == '\f' || s[i] == '\r')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (s[i] == '-' || s[i] == '+')
 	{
-		if (str[i] == '-')
-		sign = -1;
-	i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = (num * 10) + (str[i] - '0');
+		if (s[i] == '-')
+			sign = -1;
 		i++;
 	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		num = (num * 10) + (s[i] - '0');
+		i++;
+	}
+	if ((sign * num) > INT_MAX || (sign * num) < INT_MIN)
+		{
+			printf("%sMAX INT OR MIN INT alert! be carefully%s", RED, RESET);
+			exit(0);
+		}
 	return (sign * num);
 }
 
@@ -76,10 +81,10 @@ int	my_usleep(u_int64_t interlude)
 /*This function is mainly for parsing the argumetns*/
 void	parsing_argus(t_input *params, char *av[])
 {
-	params->how_many = ft_atoi(av[1]);
-	params->time_to_die = ft_atoi(av[2]);
-	params->time_to_eat = ft_atoi(av[3]);
-	params->time_to_sleep = ft_atoi(av[4]);
+	params->how_many = ft_atoi_plus(av[1]);
+	params->time_to_die = ft_atoi_plus(av[2]);
+	params->time_to_eat = ft_atoi_plus(av[3]);
+	params->time_to_sleep = ft_atoi_plus(av[4]);
 }
 
 /*THIS FILE ALREADY HAS 5 FUNCTIONS*/
