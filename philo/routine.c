@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/16 17:46:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 13:00:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	start_routine(t_table *the_table, int how_many)
 	the_array = the_table->philly;
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
 	count = 0;
-	// I was creating the monitor thread here previously
-	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	while (count < how_many)
 	{
 	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
 	my_usleep(10);
 	count++;
 	}
+	// I was creating the monitor thread here previously
+	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	count = 0;
 	while (count < how_many)
 	{

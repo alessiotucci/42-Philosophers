@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/21 21:22:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 13:08:40 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -26,7 +26,7 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	printf("%s☠️ function CHECK IF DEAD☠️%s\n", YELLOW, RESET);
 	pthread_mutex_lock(&socratis->state_of_philo);
 		printf("%stime[%llu] >=  last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
-	if (time >= socratis->time_to_die && !socratis->is_eating)// checking the time to die and if a philos is busy
+	if (time >= socratis->last_time_eat)// && !socratis->is_eating)// checking the time to die and if a philos is busy
 		{
 		printf("%soops someone is dead %s\n", RED,  RESET);
 		//printf("%stime[%llu] >=  last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
@@ -60,7 +60,7 @@ void	*monitoring(void *param)
 	table = (t_table *) param;
 	philos = table->philly;
 	count = 0;
-	printf("%s------MONITOR THREAD HAS STARTED------%s\n", YELLOW, RESET);
+	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 	while (table->someone_is_dead == 0 && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
 	{
