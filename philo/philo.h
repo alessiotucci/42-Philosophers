@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 13:15:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 13:51:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ typedef struct s_plato
 	pthread_mutex_t	*right_fork;
 }		t_plato;
 /* the table where the philosopher are sitting*/
+
 typedef struct s_table
 {
 	t_plato		*philly;
 	int		philly_size;
-	// those are mutexes
 	pthread_mutex_t	*few_forks;
 	pthread_mutex_t	lock_table;
 	pthread_mutex_t	writing;
@@ -90,13 +90,13 @@ typedef struct s_table
 	int		someone_is_dead;
 	int		enough_is_enough;
 	pthread_t		monitor;
-	//
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
 	u_int64_t		time_of_start;
 	int		meals_to_eat;
 }		t_table;
+
 /* utils function */
 int	ft_isdigit(int argum);
 long	ft_atoi_plus(const char *str);

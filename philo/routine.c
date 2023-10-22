@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 13:00:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 13:29:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	start_routine(t_table *the_table, int how_many)
 	the_table->time_of_start = my_get_time();// this get time is working ?
 	the_array = the_table->philly;
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
+	// I was creating the monitor thread here previously
+	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	count = 0;
 	while (count < how_many)
 	{
@@ -27,8 +29,6 @@ void	start_routine(t_table *the_table, int how_many)
 	my_usleep(10);
 	count++;
 	}
-	// I was creating the monitor thread here previously
-	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	count = 0;
 	while (count < how_many)
 	{
