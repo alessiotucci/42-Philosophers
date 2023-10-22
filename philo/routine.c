@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 13:29:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 18:25:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	start_routine(t_table *the_table, int how_many)
 	count++;
 	}
 	// I am not sure if I need to join the monitor thread here or elsewhere
-	//pthread_join(the_table->monitor, NULL);
+	pthread_detach(the_table->monitor);
 }
 
 void	*routing(void *argum)
@@ -48,8 +48,10 @@ void	*routing(void *argum)
 	philosopo = (t_plato *)argum;
 	the_table = (t_table *)philosopo->table;
 	// Should I create the thread to monitor here?
-	while (!philosopo->table->someone_is_dead && !philosopo->table->enough_is_enough)
+		pthread_mutex_lock(&the_table->lock_table);
+	while (philosopo->table->someone_is_dead == 0)// && !philosopo->table->enough_is_enough)
 	{
+	pthread_mutex_unlock(&the_table->lock_table);
 	eats(philosopo);
 	sleeps(philosopo);
 	thinks(philosopo);

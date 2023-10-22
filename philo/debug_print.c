@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 10:11:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/22 16:19:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	print_table(t_table *new_table)
 
 }
 
-/**/
+/* function to print out the struct, it uses a flag*/
 void	print_struct(t_input *philo, int flag)
 {
 	if (check_input(philo) == 0)
