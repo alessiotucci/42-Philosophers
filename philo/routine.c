@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 18:25:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/24 11:38:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	start_routine(t_table *the_table, int how_many)
 	while (count < how_many)
 	{
 	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
-	my_usleep(10);
+	my_usleep(15);
 	count++;
 	}
 	count = 0;
