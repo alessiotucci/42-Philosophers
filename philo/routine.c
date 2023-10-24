@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/24 11:38:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:45:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	*routing(void *argum)
 	the_table = (t_table *)philosopo->table;
 	// Should I create the thread to monitor here?
 		pthread_mutex_lock(&the_table->lock_table);
-	while (philosopo->table->someone_is_dead == 0)// && !philosopo->table->enough_is_enough)
+	while (philosopo->table->someone_is_dead == 0 && !philosopo->table->enough_is_enough)
 	{
 	pthread_mutex_unlock(&the_table->lock_table);
 	eats(philosopo);

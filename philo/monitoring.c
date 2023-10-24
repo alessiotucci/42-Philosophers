@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/24 11:43:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:50:51 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -29,15 +29,17 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	if (socratis->last_time_eat == 0)
 	{
 		// edge case if I start checking before a philo has event started to eat;
-		my_usleep(socratis->time_to_die);
+		my_usleep(socratis->time_to_die/ 3);
+		socratis->last_time_eat = -1;
 	}
-		printf("%stime[%llu] >= last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
-	if (time >= socratis->last_time_eat)// && !socratis->is_eating)// checking the time to die and if a philos is busy
+		//printf("%stime[%llu] >= last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
+	if (time >= socratis->last_time_eat && socratis->is_eating == 0)// checking the time to die and if a philos is busy
 		{
-	pthread_mutex_unlock(&socratis->eat_last_time); // unlock the mutex ?
-		printf("%stime[%llu] >= last_eat_time[%zu]%s\n", RED, time, socratis->last_time_eat, RESET);
+		pthread_mutex_unlock(&socratis->eat_last_time); // unlock the mutex ?
+	//	printf("%stime[%llu] >= last_eat_time[%zu]%s\n", RED, time, socratis->last_time_eat, RESET);
 		pthread_mutex_lock(&table->lock_table);
 		table->someone_is_dead = 1;
+		// lock the mutex of socratis
 		dying(socratis);
 		pthread_mutex_unlock(&table->lock_table);
 		return ;
@@ -70,7 +72,7 @@ void	*monitoring(void *param)
 	philos = table->philly;
 	count = 0;
 	my_usleep(t);
-	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
+//	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 		pthread_mutex_lock(&table->lock_table);
 	while (table->someone_is_dead == 0 && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
