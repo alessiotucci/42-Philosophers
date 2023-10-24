@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 13:51:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:33:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,21 @@ typedef struct s_plato
 	struct s_table		*table;
 	pthread_t		thread;
 	int		name;
+
+	pthread_mutex_t	state_of_philo;
 	int		alive;
-	pthread_mutex_t	meals_lock;
 	int		is_eating;
+
+	pthread_mutex_t	meals_lock;
 	int		meal_eaten;
-	size_t		last_time_eat;
+
 	pthread_mutex_t	eat_last_time;
+	size_t		last_time_eat;
+
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
 	// those are mutexes
-	pthread_mutex_t	state_of_philo;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }		t_plato;

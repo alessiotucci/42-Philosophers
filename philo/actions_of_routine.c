@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 18:48:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:26:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	eats(t_plato *philo)
 
 	table = philo->table;
 	take_forks(philo);
-	//
+	// writing the eating...
 	console_write(philo->table, philo->name, EAT);
-	//
+// locking the status, and set the status for eating
+	pthread_mutex_lock(&philo->state_of_philo);
+	pthread_mutex_unlock(&philo->state_of_philo);
 	// perform the action of eating for a certain amount of time
 	pthread_mutex_lock(&philo->eat_last_time);
 	philo->last_time_eat = my_get_time() + philo->time_to_die;
