@@ -68,4 +68,20 @@ This conversion is often used when working with time-related data in C, as it al
 | pthread_mutex_unlock       | pthread.h                | int pthread_mutex_unlock(pthread_mutex_t *mutex); |
 
 
+# Bonus part
+
+## Functions
+
+| Function         | Library          | Prototype                                      |
+|------------------|------------------|------------------------------------------------|
+| fork             | unistd.h         | pid_t fork(void)                               |
+| kill             | signal.h         | int kill(pid_t pid, int sig)                   |
+| exit             | stdlib.h         | void exit(int status)                         |
+| waitpid          | sys/types.h, sys/wait.h | pid_t waitpid(pid_t pid, int *status, int options) |
+| sem_open         | semaphore.h      | sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value) |
+| sem_close        | semaphore.h      | int sem_close(sem_t *sem)                    |
+| sem_post         | semaphore.h      | int sem_post(sem_t *sem)                     |
+| sem_wait         | semaphore.h      | int sem_wait(sem_t *sem)                     |
+| sem_unlink       | semaphore.h      | int sem_unlink(const char *name)             |
+
 
