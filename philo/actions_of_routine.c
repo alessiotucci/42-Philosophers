@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 11:25:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 12:32:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*eats(t_plato *philo)
 	// perform the action of eating for a certain amount of time
 	pthread_mutex_lock(&philo->eat_last_time);
 	philo->last_time_eat = my_get_time() + philo->time_to_die;
-//	printf("%supdate[%d]%s\nlast time eat is(%llu+%zu)= %zu\n", BG_RED, philo->name, BG_RESET, my_get_time(), philo->time_to_die, philo->last_time_eat);
+	//printf("%supdate[%d]%s\nlast time eat is(%llu+%zu)= %zu\n", BG_RED, philo->name, BG_RESET, my_get_time(), philo->time_to_die, philo->last_time_eat);
 	pthread_mutex_unlock(&philo->eat_last_time);
 	//
 	pthread_mutex_lock(&philo->meals_lock);

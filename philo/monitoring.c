@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 11:21:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:47:43 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -77,7 +77,7 @@ void	*monitoring(void *param)
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 		pthread_mutex_lock(&table->lock_table);
-	while (table->someone_is_dead == 0 && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
+	while (table->someone_is_dead == 0)// && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
 	{
 		pthread_mutex_unlock(&table->lock_table);
 		check_for_death(table, &philos[count]);

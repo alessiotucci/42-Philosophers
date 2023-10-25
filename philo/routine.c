@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 10:53:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 12:40:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	*routing(void *argum)
 	return eats(philosopo);
 	}
 		pthread_mutex_lock(&the_table->lock_table);
-	while (philosopo->table->someone_is_dead == 0 && !philosopo->table->enough_is_enough)
+		// we need to find a way to make the monitor thread communicated, instead of doing this
+	while (philosopo->table->someone_is_dead == 0)// && !philosopo->table->enough_is_enough)
 	{
 	pthread_mutex_unlock(&the_table->lock_table);
 	eats(philosopo);
