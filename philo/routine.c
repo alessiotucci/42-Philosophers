@@ -6,12 +6,14 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/24 14:45:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 10:53:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/*here I start the thread with their routines.
+	* I create a monitor thread that I detach from the rest*/
 void	start_routine(t_table *the_table, int how_many)
 {
 	int count;
@@ -48,6 +50,10 @@ void	*routing(void *argum)
 	philosopo = (t_plato *)argum;
 	the_table = (t_table *)philosopo->table;
 	// Should I create the thread to monitor here?
+	if (the_table->philly_size == 1)
+	{
+	return eats(philosopo);
+	}
 		pthread_mutex_lock(&the_table->lock_table);
 	while (philosopo->table->someone_is_dead == 0 && !philosopo->table->enough_is_enough)
 	{

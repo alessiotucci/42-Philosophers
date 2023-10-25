@@ -6,11 +6,23 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/22 16:19:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:40:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/* Useful function that lock mutex and print with nice colors*/
+u_int64_t	console_write(t_table *table, int name, char *message, char *color)
+{
+	u_int64_t	time;
+
+	time = my_get_time() - table->time_of_start;
+	pthread_mutex_lock(&table->writing);
+	printf("%llu %d %s%s%s\n", time, name, color, message, RESET);
+	pthread_mutex_unlock(&table->writing);
+	return (my_get_time()); // little updated.
+}
 
 /* static function to check for inputs*/
 static int	check_input(t_input *phil)
@@ -69,13 +81,3 @@ void	print_struct(t_input *philo, int flag)
 	return ;
 }
 
-u_int64_t	console_write(t_table *table, int name, char *message)
-{
-	u_int64_t	time;
-
-	time = my_get_time() - table->time_of_start;
-	pthread_mutex_lock(&table->writing);
-	printf("%llu %d %s\n", time, name, message);
-	pthread_mutex_unlock(&table->writing);
-	return (my_get_time()); // little updated.
-}

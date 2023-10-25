@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 12:29:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:43:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char *av[])
 		flag = 1;
 	}
 	else
-		test.often_eat = 1;
+		test.often_eat = 0; // if this is not specified, think about it
 	print_struct(&test, flag);
 	lay_the_table(&test, &nice_table);
 	print_table(&nice_table);

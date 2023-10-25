@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/24 14:50:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:21:17 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -14,8 +14,10 @@
 
 static void	dying(t_plato *philo)
 {
-	console_write(philo->table, philo->name, DIED);
-	exit (0);
+	console_write(philo->table, philo->name, DIED, RED);
+	pthread_mutex_lock(&philo->state_of_philo);
+	philo->alive = 0;
+	pthread_mutex_unlock(&philo->state_of_philo);
 }
 
 /* helper function to check for death*/
@@ -29,14 +31,14 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	if (socratis->last_time_eat == 0)
 	{
 		// edge case if I start checking before a philo has event started to eat;
-		my_usleep(socratis->time_to_die/ 3);
-		socratis->last_time_eat = -1;
+		my_usleep(socratis->time_to_die - 100);
+//		socratis->last_time_eat = 1;
 	}
-		//printf("%stime[%llu] >= last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
+//		printf("%stime[%llu] >= last_eat_time[%zu]%s\n", YELLOW, time, socratis->last_time_eat, RESET);
 	if (time >= socratis->last_time_eat && socratis->is_eating == 0)// checking the time to die and if a philos is busy
 		{
 		pthread_mutex_unlock(&socratis->eat_last_time); // unlock the mutex ?
-	//	printf("%stime[%llu] >= last_eat_time[%zu]%s\n", RED, time, socratis->last_time_eat, RESET);
+//		printf("%stime[%llu] >= last_eat_time[%zu]%s\n", RED, time, socratis->last_time_eat, RESET);
 		pthread_mutex_lock(&table->lock_table);
 		table->someone_is_dead = 1;
 		// lock the mutex of socratis
@@ -86,6 +88,7 @@ void	*monitoring(void *param)
 		count = 0;
 	my_usleep(t);
 	}
+//	printf("the monitor thread is finished\n");
 	return NULL;
 }
 

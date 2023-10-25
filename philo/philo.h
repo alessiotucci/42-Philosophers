@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 10:36:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:25:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define DIED "died"
 
 /* Define color macros */
+#define GRAY    "\033[1;30m"
 # define GREEN   "\033[1;32m"
 # define CYAN    "\033[1;36m"
 # define YELLOW  "\033[1;33m"
@@ -134,8 +135,8 @@ void	free_all(t_table *old_table);
 void	*monitoring(void *argum);
 
 /* Action of the routine*/
-void	eats(t_plato *philo);
+void	*eats(t_plato *philo);
 void	thinks(t_plato *philo);
 void	sleeps(t_plato *philo);
-u_int64_t	console_write(t_table *table, int name, char *message);
+u_int64_t	console_write(t_table *table, int name, char *message, char *color);
 #endif
