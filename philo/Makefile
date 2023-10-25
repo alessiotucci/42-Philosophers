@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:09:19 by atucci            #+#    #+#              #
-#    Updated: 2023/10/11 12:55:53 by atucci           ###   ########.fr        #
+#    Updated: 2023/10/25 10:40:59 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ RM = rm -f
 
 #------------------------------------------------------------------------------
 # This set the C compiler with the specific warning flags
-CC = gcc -Wall -Werror -Wextra
+CC = gcc -Wall -Werror -Wextra -g -pthread
 
 # Color codes for echo commands to make the output more visually informative.
 GREEN := \033[1;32m
