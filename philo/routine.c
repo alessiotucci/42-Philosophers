@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 12:40:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 10:18:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,15 @@ void	*routing(void *argum)
 	// Should I create the thread to monitor here?
 	if (the_table->philly_size == 1)
 	{
-	return eats(philosopo);
-	}
-		pthread_mutex_lock(&the_table->lock_table);
-		// we need to find a way to make the monitor thread communicated, instead of doing this
-	while (philosopo->table->someone_is_dead == 0)// && !philosopo->table->enough_is_enough)
-	{
-	pthread_mutex_unlock(&the_table->lock_table);
 	eats(philosopo);
-	sleeps(philosopo);
-	thinks(philosopo);
+	return (NULL);
+	}
+		// we need to find a way to make the monitor thread communicated, instead of doing this
+	while (!check_table(the_table))// && !philosopo->table->enough_is_enough)
+	{
+	eats(philosopo); // check this one
+	if (sleeps(philosopo)) break;
+	if (thinks(philosopo)) break;
 	}
 	return (NULL);
 }

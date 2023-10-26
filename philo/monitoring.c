@@ -6,10 +6,22 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/25 11:47:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 10:08:38 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/* 1 means alive :)
+	* 0 means death ☠️ */
+int	check_table(t_table *table_to_check)
+{
+	int	result;
+
+	pthread_mutex_lock(&table_to_check->lock_table);
+	result = table_to_check->someone_is_dead;
+	pthread_mutex_unlock(&table_to_check->lock_table);
+	return (result);
+}
 
 
 static void	dying(t_plato *philo)
