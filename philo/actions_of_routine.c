@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_of_routine.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 15:24:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 20:19:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,32 @@
 
 static int take_forks(t_plato *philo, int flag)
 {
-//	pthread_mutex_lock(&philo->state_of_philo);
-//	if (philo->alive == 1)
-// do something about it
-//	pthread_mutex_unlock(&philo->state_of_philo);
-
+/*	int d;
+	if (philo->name % 2 == 0)
+		d = 0;
+	else
+		d = 5;
+*/
 	if (flag == 1)
 	{
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 	my_usleep(philo->time_to_die);
 	return 1;
 	}
-//		printf("%s TAKE FORK!\n %llu  check the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
-	if (!check_table(philo->table) && philo->alive == 1)
+		//printf("%s TAKE FORK!\n %llu  check the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
+	if (check_table(philo->table) == 0 && philo->alive == 1)
 	{
 		if (check_table(philo->table) || philo->alive == 0)
 		return (1);
+
 	pthread_mutex_lock(philo->right_fork);
-		if (check_table(philo->table) || philo->alive == 0) return (1); // this is the BIG  deal
+		if (check_table(philo->table) || philo->alive == 0)
+			return (1); // this is the BIG  deal
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 // this is the troubles 
 	if (check_table(philo->table) || philo->alive == 0)
 		return (1);
+
 	pthread_mutex_lock(philo->left_fork);
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 	return (0);
@@ -99,7 +103,7 @@ int	eats(t_plato *philo)
 /* We need to think for a certaing amount of time*/ 
 int	thinks(t_plato *philo)
 {
-	if (!check_table(philo->table)) // condition needed
+	if (check_table(philo->table) == 0) // condition needed
 	{
 		console_write(philo->table, philo->name, THINK, GRAY);
 		return (0);
@@ -110,7 +114,7 @@ int	thinks(t_plato *philo)
 /*We need to sleep for a certain amount of time*/
 int	sleeps(t_plato *philo)
 {
-	if (!check_table(philo->table))// condition needed
+	if (check_table(philo->table) == 0)// condition needed
 	{
 	console_write(philo->table, philo->name, SLEEP, CYAN);
 	my_usleep(philo->time_to_sleep);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 14:31:03 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 20:13:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	start_routine(t_table *the_table, int how_many)
 	while (count < how_many)
 	{
 	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
-	my_usleep(15);
+	my_usleep(10);
 	count++;
 	}
 	count = 0;

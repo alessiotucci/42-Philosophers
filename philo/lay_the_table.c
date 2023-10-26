@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lay_the_table.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 11:12:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 18:41:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	set_table_mutexes(t_table *new_table)
 	{
 	pthread_mutex_init(&new_table->few_forks[count], NULL); // this mutex will need to be destoyed
 	count++;
-}
+	}
 		pthread_mutex_init(&new_table->writing, NULL); // this mutex will need to be destoyed
 		assign_forks_to_philos(new_table);
 }
@@ -90,6 +90,6 @@ int	lay_the_table(t_input *param,t_table *new_table)
 	new_table->someone_is_dead = 0;
 	new_table->enough_is_enough = 0;
 	set_table_mutexes(new_table);
-		create_name_philos(new_table);
+	create_name_philos(new_table);
 	return (0);
 }
