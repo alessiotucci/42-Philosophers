@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 13:09:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 15:24:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ static int take_forks(t_plato *philo, int flag)
 	my_usleep(philo->time_to_die);
 	return 1;
 	}
-		printf("%s INSIDE TAKE FORK!\n %llu  check the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
+//		printf("%s TAKE FORK!\n %llu  check the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
 	if (!check_table(philo->table) && philo->alive == 1)
 	{
 		if (check_table(philo->table) || philo->alive == 0)
 		return (1);
 	pthread_mutex_lock(philo->right_fork);
+		if (check_table(philo->table) || philo->alive == 0) return (1); // this is the BIG  deal
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
-// do something about it?	
+// this is the troubles 
 	if (check_table(philo->table) || philo->alive == 0)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
@@ -41,13 +42,19 @@ static int take_forks(t_plato *philo, int flag)
 	}
 	return (1);
 }
-static void	drops_forks(t_plato *philo)
+static int drops_forks(t_plato *philo)
 {
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&philo->state_of_philo);
 	philo->is_eating = 0;
 	pthread_mutex_unlock(&philo->state_of_philo);
+
+	//printf("%sdrop forks %d-> check table is [%d]%s\n", BG_RED, philo->name, check_table(philo->table), BG_RESET);
+	if (check_table(philo->table) == 1)
+		return 1;
+	else
+		return 0;
 }
 /* To start eating we need two forks*/
 int	eats(t_plato *philo)
@@ -61,7 +68,7 @@ int	eats(t_plato *philo)
 	else
 	{
 		// work here bro
-		printf("%s INSIDE eat %d!\n %llu check the table result: %d\tphilo->alive[%d]%s\n", PURPLE, philo->name, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
+//		printf("%s LET EAT(%d)\n %llu check the table result: %d\tphilo->alive[%d]%s\n", PURPLE, philo->name, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
 		if (!check_table(philo->table) && philo->alive == 1)
 		{
 		if (take_forks(philo, 0))
@@ -82,8 +89,8 @@ int	eats(t_plato *philo)
 		pthread_mutex_unlock(&philo->meals_lock);
 	//
 		my_usleep(philo->time_to_eat);
-		drops_forks(philo); // changing the status here!
-		return (0);
+		return (drops_forks(philo)); // changing the status here!
+		//return (0);
 		}
 	return (1);
 	}
