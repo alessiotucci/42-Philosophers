@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 10:26:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:10:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,17 @@ static int take_forks(t_plato *philo, int flag)
 	my_usleep(philo->time_to_die);
 	return 1;
 	}
+		printf("%sINSIDE TAKE FORK!\n\t%llu\tcheck the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time(), check_table(philo->table), philo->alive, RESET);
+	if (!check_table(philo->table) && philo->alive == 1)
+	{
 	pthread_mutex_lock(philo->right_fork);
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 // do something about it?	
 	pthread_mutex_lock(philo->left_fork);
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 	return (0);
+	}
+	return (1);
 }
 static void	drops_forks(t_plato *philo)
 {
@@ -52,7 +57,11 @@ int	eats(t_plato *philo)
 	else
 	{
 		// work here bro
-		take_forks(philo, 0);
+		printf("%sINSIDE ELSE eat!\n\t%llu check the table result: %d\tphilo->alive[%d]%s\n", PURPLE,my_get_time(), check_table(philo->table), philo->alive, RESET);
+		if (!check_table(philo->table) && philo->alive == 1)
+		{
+		if (take_forks(philo, 0))
+			return (1);
 		console_write(philo->table, philo->name, EAT, GREEN);
 		pthread_mutex_lock(&philo->state_of_philo);
 		philo->alive = 1;
@@ -71,6 +80,8 @@ int	eats(t_plato *philo)
 		my_usleep(philo->time_to_eat);
 		drops_forks(philo); // changing the status here!
 		return (0);
+		}
+	return (1);
 	}
 }
 

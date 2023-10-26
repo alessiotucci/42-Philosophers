@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 10:08:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:00:49 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -20,12 +20,16 @@ int	check_table(t_table *table_to_check)
 	pthread_mutex_lock(&table_to_check->lock_table);
 	result = table_to_check->someone_is_dead;
 	pthread_mutex_unlock(&table_to_check->lock_table);
+	printf("%s\t%llu\tcheck the table result: %d%s\n",BLUE, my_get_time(), result, RESET);
 	return (result);
 }
 
 
 static void	dying(t_plato *philo)
 {
+	pthread_mutex_lock(&philo->table->lock_table);
+	philo->table->someone_is_dead = 1;
+	pthread_mutex_unlock(&philo->table->lock_table);
 	console_write(philo->table, philo->name, DIED, RED);
 	pthread_mutex_lock(&philo->state_of_philo);
 	philo->alive = 0;
@@ -88,10 +92,10 @@ void	*monitoring(void *param)
 	my_usleep(t);
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
-		pthread_mutex_lock(&table->lock_table);
-	while (table->someone_is_dead == 0)// && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
+//		pthread_mutex_lock(&table->lock_table);
+	while (!check_table(table))// && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
 	{
-		pthread_mutex_unlock(&table->lock_table);
+//		pthread_mutex_unlock(&table->lock_table);
 		check_for_death(table, &philos[count]);
 		check_if_full(table, &philos[count]);
 	if (count < table->philly_size - 1)

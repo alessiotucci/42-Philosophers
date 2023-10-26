@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 10:16:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 11:48:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define DIED "died"
 
 /* Define color macros */
+#define BLUE    "\033[1;34m"
+#define PURPLE  "\033[1;35m"
 #define GRAY    "\033[1;30m"
 # define GREEN   "\033[1;32m"
 # define CYAN    "\033[1;36m"
