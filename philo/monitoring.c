@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 12:00:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:03:55 by atucci           ###   ########.fr       */
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -20,7 +20,7 @@ int	check_table(t_table *table_to_check)
 	pthread_mutex_lock(&table_to_check->lock_table);
 	result = table_to_check->someone_is_dead;
 	pthread_mutex_unlock(&table_to_check->lock_table);
-	printf("%s\t%llu\tcheck the table result: %d%s\n",BLUE, my_get_time(), result, RESET);
+	//printf("%s %llu  check the table result: %d%s\n",BLUE, my_get_time() - table_to_check->time_of_start, result, RESET);
 	return (result);
 }
 
@@ -85,7 +85,7 @@ void	*monitoring(void *param)
 	t_table	*table;
 	int		count;
 
-	int t = 100;// this value is bogus
+	int t = 1;// this value is bogus
 	table = (t_table *) param;
 	philos = table->philly;
 	count = 0;

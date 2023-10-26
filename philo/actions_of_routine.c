@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 12:10:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:09:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ static int take_forks(t_plato *philo, int flag)
 	my_usleep(philo->time_to_die);
 	return 1;
 	}
-		printf("%sINSIDE TAKE FORK!\n\t%llu\tcheck the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time(), check_table(philo->table), philo->alive, RESET);
+		printf("%s INSIDE TAKE FORK!\n %llu  check the table result: %d\tphilo->alive[%d]%s\n", RED, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
 	if (!check_table(philo->table) && philo->alive == 1)
 	{
+		if (check_table(philo->table) || philo->alive == 0)
+		return (1);
 	pthread_mutex_lock(philo->right_fork);
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 // do something about it?	
+	if (check_table(philo->table) || philo->alive == 0)
+		return (1);
 	pthread_mutex_lock(philo->left_fork);
 	console_write(philo->table, philo->name, TAKE_FORK, YELLOW);
 	return (0);
@@ -57,7 +61,7 @@ int	eats(t_plato *philo)
 	else
 	{
 		// work here bro
-		printf("%sINSIDE ELSE eat!\n\t%llu check the table result: %d\tphilo->alive[%d]%s\n", PURPLE,my_get_time(), check_table(philo->table), philo->alive, RESET);
+		printf("%s INSIDE eat %d!\n %llu check the table result: %d\tphilo->alive[%d]%s\n", PURPLE, philo->name, my_get_time() - philo->table->time_of_start, check_table(philo->table), philo->alive, RESET);
 		if (!check_table(philo->table) && philo->alive == 1)
 		{
 		if (take_forks(philo, 0))
