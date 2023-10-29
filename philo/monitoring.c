@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 22:18:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:46:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	*monitoring(void *param)
 	t_table	*table;
 	int		count;
 
-	int t = 100;// this value is bogus
+	int t = 150;// this value is bogus
 	table = (t_table *) param;
 	philos = table->array_of_philos;
 	count = 0;
@@ -119,7 +119,9 @@ void	*monitoring(void *param)
 		count++;
 	else
 		count = 0;
-	my_usleep(t);
+	if (t <= 1)
+		t = 150;
+	my_usleep(t--);
 	}
 //	printf("%sthe monitor thread is finished%s\n", BG_RED, BG_RESET);
 	return NULL;

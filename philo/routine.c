@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:26:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:51:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	start_routine(t_table *the_table, int how_many)
 	while (count < how_many)
 	{
 	pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
-	my_usleep(10);
+	my_usleep(0); // start working over there
 	count++;
 	}
 	count = 0;
@@ -56,7 +56,7 @@ void	*routing(void *argum)
 	return (NULL);
 	}
 		// we need to find a way to make the monitor thread communicated, instead of doing this
-	while (!check_table(the_table))// && !philosopo->table->enough_is_enough)
+	while (check_table(the_table) == 0 && the_table->enough_is_enough <= the_table->array_size)
 	{
 	if (eats(philosopo))
 		break; // check this one
