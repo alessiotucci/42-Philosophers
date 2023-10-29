@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:24:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:11:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	create_name_philos(t_table *new_table)
 	new_table->array_of_philos[count].name = count + 1;
 	new_table->array_of_philos[count].meal_eaten = 0;
 	new_table->array_of_philos[count].alive = 1;
+	new_table->array_of_philos[count].philo_is_full = 0;
 //	new_table->philly[count].last_time_eat = 0; //my_get_time();
 	new_table->array_of_philos[count].time_to_die = new_table->time_to_die;
 	new_table->array_of_philos[count].time_to_sleep = new_table->time_to_sleep;

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:26:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:18:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ int	check_table(t_table *table_to_check)
 	return (result);
 }
 
+int	check_full(t_table *table_to_check)
+{
+	int	result;
+
+	pthread_mutex_lock(&table_to_check->lock_table);
+	result = table_to_check->someone_is_dead;
+	pthread_mutex_unlock(&table_to_check->lock_table);
+	return (result);
+}
 
 static void	dying(t_plato *philo)
 {
@@ -74,10 +83,12 @@ static void	check_if_full(t_table *table, t_plato *plato)
 {
 //	printf("%s-- function\tCHECK_IF_FULL---%s\n", BG_YELLOW, BG_RESET);
 	pthread_mutex_lock(&plato->meals_lock);
-		printf("%sphilo n.%d\t(meal eaten:%d) >= (meals to eat%d)%s\n", BG_YELLOW, plato->name, plato->meal_eaten, table->meals_to_eat, RESET);
-		if (plato->meal_eaten >= table->meals_to_eat)
+		//printf("%sphilo n.%d\t(meal eaten:%d) >= (meals to eat%d)%s\n", BG_YELLOW, plato->name, plato->meal_eaten, table->meals_to_eat, RESET);
+		if (plato->meal_eaten >= table->meals_to_eat && plato->philo_is_full == 0)
 		{
-			printf("Philo n.%dhas eat%s enough%s\n",plato->name, YELLOW, RESET);
+	//		printf("%sphilo n.%d\t(meal eaten:%d) >= (meals to eat%d)%s\n", BG_YELLOW, plato->name, plato->meal_eaten, table->meals_to_eat, RESET);
+	//		printf("%sPhilo n.%dhas eat enough%s\n",BG_YELLOW, plato->name, BG_RESET);
+			plato->philo_is_full = 1;
 			table->enough_is_enough++;
 		}
 	pthread_mutex_unlock(&plato->meals_lock);
@@ -88,7 +99,7 @@ void	*monitoring(void *param)
 	t_table	*table;
 	int		count;
 
-	int t = 134;// this value is bogus
+	int t = 100;// this value is bogus
 	table = (t_table *) param;
 	philos = table->array_of_philos;
 	count = 0;
@@ -96,19 +107,21 @@ void	*monitoring(void *param)
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 //		pthread_mutex_lock(&table->lock_table);
-	while (!check_table(table))// && table->enough_is_enough <= table->philly_size) // this condition will be changed in the future
+	while (!check_table(table) && table->enough_is_enough <= table->array_size) // this condition will be changed in the future
 	{
 //		pthread_mutex_unlock(&table->lock_table);
 		check_for_death(table, &philos[count]);
 		if (table->meals_to_eat != 0) // if given amout of meals, check them, otherwise just check for death;
 		check_if_full(table, &philos[count]);
+		if (table->enough_is_enough >= table->array_size)
+			break ;
 	if (count < table->array_size - 1)
 		count++;
 	else
 		count = 0;
 	my_usleep(t);
 	}
-//	printf("the monitor thread is finished\n");
+//	printf("%sthe monitor thread is finished%s\n", BG_RED, BG_RESET);
 	return NULL;
 }
 

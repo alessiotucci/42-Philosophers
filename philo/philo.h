@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:15:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:09:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_plato
 // this mutex is to lock the number of meal eaten by philos
 	pthread_mutex_t	meals_lock;
 	int		meal_eaten;
+	int		philo_is_full;
 // this mutex is to lock the last time eat
 	pthread_mutex_t	eat_last_time;
 	size_t		last_time_eat;
@@ -96,7 +97,7 @@ typedef struct s_table
 
 	pthread_mutex_t	*few_forks;
 
-	pthread_mutex_t	lock_table; // locking the table if someone is dying
+	pthread_mutex_t	lock_table; // locking the table if someone is dying or to check meals
 
 	pthread_mutex_t	writing; // locking to write with the console write
 
