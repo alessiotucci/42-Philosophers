@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 20:19:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:27:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	eats(t_plato *philo)
 	t_table *table;
 
 	table = philo->table;
-	if (table->philly_size == 1)
+	if (table->array_size== 1)
 		return ((take_forks(philo, 1)));
 	else
 	{

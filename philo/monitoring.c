@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/27 07:18:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:26:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	*monitoring(void *param)
 
 	int t = 134;// this value is bogus
 	table = (t_table *) param;
-	philos = table->philly;
+	philos = table->array_of_philos;
 	count = 0;
 	my_usleep(t);
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
@@ -102,7 +102,7 @@ void	*monitoring(void *param)
 		check_for_death(table, &philos[count]);
 		if (table->meals_to_eat != 0) // if given amout of meals, check them, otherwise just check for death;
 		check_if_full(table, &philos[count]);
-	if (count < table->philly_size - 1)
+	if (count < table->array_size - 1)
 		count++;
 	else
 		count = 0;

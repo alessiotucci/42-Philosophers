@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 20:13:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:26:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	start_routine(t_table *the_table, int how_many)
 	t_plato *the_array;
 
 	the_table->time_of_start = my_get_time();// this get time is working ?
-	the_array = the_table->philly;
+	the_array = the_table->array_of_philos;
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
 	// I was creating the monitor thread here previously
 	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
@@ -50,7 +50,7 @@ void	*routing(void *argum)
 	philosopo = (t_plato *)argum;
 	the_table = (t_table *)philosopo->table;
 	// Should I create the thread to monitor here?
-	if (the_table->philly_size == 1)
+	if (the_table->array_size == 1)
 	{
 	eats(philosopo);
 	return (NULL);

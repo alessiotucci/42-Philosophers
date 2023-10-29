@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 18:30:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:15:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ typedef struct s_plato
 	* they are sharing the forks of course*/
 typedef struct s_table
 {
-	t_plato		*philly;
-	int		philly_size;
+	t_plato		*array_of_philos;
+	int		array_size;
 
 	pthread_mutex_t	*few_forks;
 

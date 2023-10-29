@@ -57,36 +57,36 @@ This conversion is often used when working with time-related data in C, as it al
 ---
 <br>
 
-| Function                   | Library                  | Prototype                                       | video |
-|----------------------------|--------------------------|-------------------------------------------------|-------|
-| pthread_create             | pthread.h                | int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); | ...|
-| pthread_detach             | pthread.h                | int pthread_detach(pthread_t thread);          | ...|
-| pthread_join               | pthread.h                | int pthread_join(pthread_t thread, void **retval); | ...|
-| pthread_mutex_init         | pthread.h                | int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr); | ...|
-| pthread_mutex_destroy      | pthread.h                | int pthread_mutex_destroy(pthread_mutex_t *mutex); | ...|
-| pthread_mutex_lock         | pthread.h                | int pthread_mutex_lock(pthread_mutex_t *mutex); | ...|
-| pthread_mutex_unlock       | pthread.h                | int pthread_mutex_unlock(pthread_mutex_t *mutex); | ...|
+| Function                   | Library                  | Prototype                                       |
+|----------------------------|--------------------------|-------------------------------------------------|
+| pthread_create             | pthread.h                | int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); |
+| pthread_detach             | pthread.h                | int pthread_detach(pthread_t thread);          |
+| pthread_join               | pthread.h                | int pthread_join(pthread_t thread, void **retval); |
+| pthread_mutex_init         | pthread.h                | int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr); |
+| pthread_mutex_destroy      | pthread.h                | int pthread_mutex_destroy(pthread_mutex_t *mutex); |
+| pthread_mutex_lock         | pthread.h                | int pthread_mutex_lock(pthread_mutex_t *mutex); |
+| pthread_mutex_unlock       | pthread.h                | int pthread_mutex_unlock(pthread_mutex_t *mutex); |
 
 
 # Bonus part
 
 ## Functions
 
-| Function         | Library          | Prototype                                      | video |
-|------------------|------------------|------------------------------------------------|-------|
-| fork             | unistd.h         | pid_t fork(void)                               | ...|
-| kill             | signal.h         | int kill(pid_t pid, int sig)                   | ...|
-| exit             | stdlib.h         | void exit(int status)                         | ...|
-| waitpid          | sys/types.h, sys/wait.h | pid_t waitpid(pid_t pid, int *status, int options) | ...|
+| Function         | Library          | Prototype                                      |
+|------------------|------------------|------------------------------------------------|
+| fork             | unistd.h         | pid_t fork(void)                               |
+| kill             | signal.h         | int kill(pid_t pid, int sig)                   |
+| exit             | stdlib.h         | void exit(int status)                         |
+| waitpid          | sys/types.h, sys/wait.h | pid_t waitpid(pid_t pid, int *status, int options) |
 
 ## 🚦 Semaphores 🚦
 
-| Function         | Library          | Prototype                                      | video |
-|------------------|------------------|------------------------------------------------|-------|
-| sem_open         | semaphore.h      | sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value) | ...|
-| sem_close        | semaphore.h      | int sem_close(sem_t *sem)                    | ...|
-| sem_post         | semaphore.h      | int sem_post(sem_t *sem)                     | ...|
-| sem_wait         | semaphore.h      | int sem_wait(sem_t *sem)                     | ...|
-| sem_unlink       | semaphore.h      | int sem_unlink(const char *name)             | ...|
+| Function         | Library          | Prototype                                      |
+|------------------|------------------|------------------------------------------------|
+| sem_open         | semaphore.h      | sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value) |
+| sem_close        | semaphore.h      | int sem_close(sem_t *sem)                    |
+| sem_post         | semaphore.h      | int sem_post(sem_t *sem)                     |
+| sem_wait         | semaphore.h      | int sem_wait(sem_t *sem)                     |
+| sem_unlink       | semaphore.h      | int sem_unlink(const char *name)             |
 
 

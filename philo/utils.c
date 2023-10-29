@@ -6,16 +6,16 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/18 13:13:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:16:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* Function to free most of the stuff*/
+/*   Function to free most of the stuff*/
 void	free_all(t_table *old_table)
 {
-	free(old_table->philly);
+	free(old_table->array_of_philos);
 	return ;
 }
 int	ft_isdigit(int argum)
