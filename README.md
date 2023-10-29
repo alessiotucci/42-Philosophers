@@ -9,7 +9,7 @@ The Dining Philosopher Problem states that K philosophers are seated around a ci
 |          ...                                |[![process vs threads](https://ytcards.demolab.com/?id=K1aoimUYTK8)](https://www.youtube.com/watch?v=K1aoimUYTK8)|
 |          ...                                |[![process vs threads](https://ytcards.demolab.com/?id=raLCgPK-Igc)](https://www.youtube.com/watch?v=raLCgPK-Igc)|
 
-
+---
 
 # Allowed Function 
 Those are the only function I am allowed to use in this project.
@@ -88,5 +88,9 @@ This conversion is often used when working with time-related data in C, as it al
 | sem_post         | semaphore.h      | int sem_post(sem_t *sem)                     |
 | sem_wait         | semaphore.h      | int sem_wait(sem_t *sem)                     |
 | sem_unlink       | semaphore.h      | int sem_unlink(const char *name)             |
+
+
+<img width="438" alt="image" src="https://github.com/alessiotucci/42-Philosophers/assets/116757689/5558e409-e85e-4fcc-9508-6b319d91099d">
+
 
 
