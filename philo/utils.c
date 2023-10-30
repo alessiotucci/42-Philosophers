@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:16:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:21:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	free_all(t_table *old_table)
 	free(old_table->array_of_philos);
 	return ;
 }
+
 int	ft_isdigit(int argum)
 {
 	return (argum >= 48 && argum <= 57);
@@ -48,10 +49,10 @@ long	ft_atoi_plus(const char *s)
 		i++;
 	}
 	if ((sign * num) > INT_MAX || (sign * num) < INT_MIN)
-		{
-			printf("%sMAX INT OR MIN INT alert! be carefully%s", RED, RESET);
-			exit(0);
-		}
+	{
+		printf("%sMAX INT OR MIN INT alert! be carefully%s", RED, RESET);
+		exit(0);
+	}
 	return (sign * num);
 }
 
@@ -78,6 +79,7 @@ int	my_usleep(u_int64_t interlude)
 		usleep(interlude / 100);
 	return (0);
 }
+
 /*This function is mainly for parsing the argumetns*/
 void	parsing_argus(t_input *params, char *av[])
 {
