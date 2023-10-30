@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 11:57:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 12:31:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,15 @@ void	*routing(void *argum)
 		eats(philosopo);
 		return (NULL);
 	}
-	while (check_table(the_table) == 0 && the_table->enough_is_enough <= the_table->array_size)
+	while (check_table(the_table) == 0 && the_table->enough_is_enough < the_table->array_size)
 	{
 		if (eats(philosopo))
 			break ;
+		if (the_table->enough_is_enough >= the_table->array_size)
+			break ;
 		if (sleeps(philosopo))
+			break ;
+		if (the_table->enough_is_enough >= the_table->array_size)
 			break ;
 		if (thinks(philosopo))
 			break ;
