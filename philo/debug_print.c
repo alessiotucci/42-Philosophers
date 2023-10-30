@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 12:19:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:34:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ u_int64_t	console_write(t_table *table, int name, char *message, char *color)
 	pthread_mutex_lock(&table->writing);
 	printf("%llu %d %s%s%s\n", time, name, color, message, RESET);
 	pthread_mutex_unlock(&table->writing);
-	return (my_get_time()); // little updated.
+	return (my_get_time());
 }
 
 /* static function to check for inputs*/
@@ -33,7 +33,7 @@ static int	check_input(t_input *phil)
 		return (printf("%sTime to die is negative%s\n", RED, RESET));
 	if (phil->time_to_eat < 0)
 		return (printf("%sTime to eat is negative%s\n", RED, RESET));
-if (phil->time_to_sleep < 0)
+	if (phil->time_to_sleep < 0)
 		return (printf("%sTime to sleep is negative%s\n", RED, RESET));
 	printf("%sThe input has been checked%s\n", GREEN, RESET);
 	return (0);
@@ -42,26 +42,25 @@ if (phil->time_to_sleep < 0)
 /*function to print the info abot the  table*/
 void	print_table(t_table *new_table)
 {
-	int	count;
+	int	c;
 
-	count = 0;
+	c = 0;
 	printf("\n\n-----------NEW TABLE -------------\n");
-	printf("|%sTable size is for [%d] philosphers%s|\n", BG_GREEN,new_table->array_size, BG_RESET);
-	while (count < new_table->array_size)
+	printf("|%sTable size [%d] philo%s|\n", BG_GREEN, new_table->array_size, BG_RESET);
+	while (c < new_table->array_size)
 	{
-		if (count % 2)
-			printf("\n|%s******* Philospher Name: %d ***********|%s\n",CYAN, new_table->array_of_philos[count].name, RESET);
+		if (c % 2)
+			printf("\n|%s* Philospher Name: %d*|%s\n", CYAN, new_table->array_of_philos[c].name, RESET);
 		else
-			printf("\n|%s******* Philospher Name: %d ***********|%s\n",YELLOW, new_table->array_of_philos[count].name, RESET);
-			printf("|\tPhilospher meal eaten->%d\t|\n", new_table->array_of_philos[count].meal_eaten);
-			printf("|\tPhilospher will die in %zums\t|\n", new_table->array_of_philos[count].time_to_die);
-			printf("|\tPhilospher will eat%zums\t|\n", new_table->array_of_philos[count].time_to_eat);
-			printf("|\tPhilospher will sleep%zums\t|\n", new_table->array_of_philos[count].time_to_sleep);
-			printf("|\tPhilospher has to eat %d meals\t|\n", new_table->meals_to_eat);
-	count++;
+			printf("\n|%s**** Philospher Name: %d ********|%s\n", YELLOW, new_table->array_of_philos[c].name, RESET);
+		printf("|\tPhilo meal eaten->%d\t|\n", new_table->array_of_philos[c].meal_eaten);
+		printf("|\tPhilo die in %zums\t|\n", new_table->array_of_philos[c].time_to_die);
+		printf("|\tPhilo eat%zums\t|\n", new_table->array_of_philos[c].time_to_eat);
+		printf("|\tPhilo sleep%zums\t|\n", new_table->array_of_philos[c].time_to_sleep);
+		printf("|\tPhilo has to eat %d meals\t|\n", new_table->meals_to_eat);
+		c++;
 	}
 	start_routine(new_table, new_table->array_size);
-
 }
 
 /* function to print out the struct, it uses a flag*/
@@ -69,15 +68,14 @@ void	print_struct(t_input *philo, int flag)
 {
 	if (check_input(philo) == 0)
 	{
-	printf("%show_many philosoper [%d]%s\n",BG_GREEN, philo->how_many, RESET);
-	printf("%stime to die ☠️ [%d]%s\n",RED, philo->time_to_die, RESET);
-	printf("%stime to eat 🍝[%d]%s\n",YELLOW, philo->time_to_eat, RESET);
-	printf("%stime to sleep 😴[%d]%s\n",CYAN, philo->time_to_sleep, RESET);
-	if (flag == 1)
-		printf("%soften eat: [%d]\n%s",CYAN, philo->often_eat, RESET);
-	else 
-		printf("not specifies how often to eat\n");
+		printf("%show_many philo [%d]%s\n", BG_GREEN, philo->how_many, RESET);
+		printf("%stime to die ☠️ [%d]%s\n", RED, philo->time_to_die, RESET);
+		printf("%stime to eat 🍝[%d]%s\n", YELLOW, philo->time_to_eat, RESET);
+		printf("%stime to sleep 😴[%d]%s\n", CYAN, philo->time_to_sleep, RESET);
+		if (flag == 1)
+			printf("%soften eat: [%d]\n%s", CYAN, philo->often_eat, RESET);
+		else
+			printf("not specifies how often to eat\n");
 	}
 	return ;
 }
-
