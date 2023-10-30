@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 11:15:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 12:03:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	eats(t_plato *philo)
 /* We need to think for a certaing amount of time*/
 int	thinks(t_plato *philo)
 {
-	if (check_table(philo->table) == 0 && philo->philo_is_full == 0) // condition needed
+	if (check_table(philo->table) == 0)// && philo->philo_is_full == 0) // condition needed
 	{
 		console_write(philo->table, philo->name, THINK, GRAY);
 		return (0);
@@ -101,7 +101,7 @@ int	thinks(t_plato *philo)
 /*We need to sleep for a certain amount of time*/
 int	sleeps(t_plato *philo)
 {
-	if (check_table(philo->table) == 0 && philo->philo_is_full == 0) // condition needed
+	if (check_table(philo->table) == 0)// && philo->philo_is_full == 0) // condition needed
 	{
 		console_write(philo->table, philo->name, SLEEP, CYAN);
 		my_usleep(philo->time_to_sleep);
