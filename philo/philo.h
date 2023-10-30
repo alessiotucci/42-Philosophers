@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/29 22:09:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:41:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 # define DIED "died"
 
 /* Define color macros */
-#define BLUE    "\033[1;34m"
-#define PURPLE  "\033[1;35m"
-#define GRAY    "\033[1;30m"
+# define BLUE    "\033[1;34m"
+# define PURPLE  "\033[1;35m"
+# define GRAY    "\033[1;30m"
 # define GREEN   "\033[1;32m"
 # define CYAN    "\033[1;36m"
 # define YELLOW  "\033[1;33m"
@@ -66,83 +66,71 @@ typedef struct s_input
 typedef struct s_plato
 {
 	struct s_table		*table;
-	pthread_t		thread;
-	int		name;
-// this mutex is lock the state: alive or is_eating
-	pthread_mutex_t	state_of_philo;
-	int		alive;
-	int		is_eating;
-// this mutex is to lock the number of meal eaten by philos
-	pthread_mutex_t	meals_lock;
-	int		meal_eaten;
-	int		philo_is_full;
-// this mutex is to lock the last time eat
-	pthread_mutex_t	eat_last_time;
-	size_t		last_time_eat;
-// those are the value to pass to my_usleep();
-	size_t		time_to_die;
-	size_t		time_to_eat;
-	size_t		time_to_sleep;
-	// those are the forks
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_t			thread;
+	int					name;
+	pthread_mutex_t		state_of_philo;
+	int					alive;
+	int					is_eating;
+	pthread_mutex_t		meals_lock;
+	int					meal_eaten;
+	int					philo_is_full;
+	pthread_mutex_t		eat_last_time;
+	size_t				last_time_eat;
+	size_t				time_to_die;
+	size_t				time_to_eat;
+	size_t				time_to_sleep;
+	pthread_mutex_t		*left_fork;
+	pthread_mutex_t		*right_fork;
 }		t_plato;
 
 /* the table where the philosopher are sitting
 	* they are sharing the forks of course*/
 typedef struct s_table
 {
-	t_plato		*array_of_philos;
-	int		array_size;
-
+	t_plato			*array_of_philos;
+	int				array_size;
 	pthread_mutex_t	*few_forks;
-
-	pthread_mutex_t	lock_table; // locking the table if someone is dying or to check meals
-
-	pthread_mutex_t	writing; // locking to write with the console write
-
-	int		someone_is_dead; 
-	int		enough_is_enough;
-	int		meals_to_eat;
-	//this is the monitor thread and needs some var
+	pthread_mutex_t	lock_table;
+	pthread_mutex_t	writing;
+	int				someone_is_dead;
+	int				enough_is_enough;
+	int				meals_to_eat;
 	pthread_t		monitor;
-
-	size_t		time_to_die;
-	size_t		time_to_eat;
-	size_t		time_to_sleep;
-
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
 	u_int64_t		time_of_start;
 }		t_table;
 
 /* utils function */
-int	ft_isdigit(int argum);
-long	ft_atoi_plus(const char *str);
+int			ft_isdigit(int argum);
+long		ft_atoi_plus(const char *str);
 
 /* modified version of time.h function*/
-int	my_usleep(u_int64_t interlude);
+int			my_usleep(u_int64_t interlude);
 u_int64_t	my_get_time(void);
 
 /* lay the tables means gathering data off all the philos and forks*/
-int	lay_the_table(t_input *params, t_table *new_table);
-int	create_name_philos(t_table *new_table);
+int			lay_the_table(t_input *params, t_table *new_table);
+int			create_name_philos(t_table *new_table);
 
 /* this function is for printing debugg*/
-void print_struct(t_input *commmand, int flag);
-void	print_table(t_table *new_table);
-void	parsing_argus(t_input *params, char *av[]);
-void	start_routine(t_table *the_table, int how_many);
-void	*routing(void *argum);
+void		print_struct(t_input *commmand, int flag);
+void		print_table(t_table *new_table);
+void		parsing_argus(t_input *params, char *av[]);
+void		start_routine(t_table *the_table, int how_many);
+void		*routing(void *argum);
 
 /* let try to be leaks free*/
-void	free_all(t_table *old_table);
-void	*monitoring(void *argum);
+void		free_all(t_table *old_table);
+void		*monitoring(void *argum);
 
 /* Action of the routine*/
-int	eats(t_plato *philo);
-int	thinks(t_plato *philo);
-int	sleeps(t_plato *philo);
+int			eats(t_plato *philo);
+int			thinks(t_plato *philo);
+int			sleeps(t_plato *philo);
 u_int64_t	console_write(t_table *table, int name, char *message, char *color);
 
 /*useful function to monitor the death*/
-int	check_table(t_table *table_to_check);
+int			check_table(t_table *table_to_check);
 #endif
