@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/26 19:23:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:23:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	check_for_digits(char *str)
 		{
 			printf("%sOnly digits please%s\n", BG_RED, RESET);
 			exit(0);
-			//return (0);
 		}
 		count++;
 	}
@@ -36,6 +35,7 @@ int	main(int ac, char *av[])
 	t_input	test;
 	int		flag;
 	t_table	nice_table;
+
 	flag = 0;
 	count = 1;
 	if (ac < 5 || ac > 6)
@@ -53,7 +53,7 @@ int	main(int ac, char *av[])
 		flag = 1;
 	}
 	else
-		test.often_eat = 0; // if this is not specified, think about it
+		test.often_eat = 0;
 	print_struct(&test, flag);
 	lay_the_table(&test, &nice_table);
 	print_table(&nice_table);
