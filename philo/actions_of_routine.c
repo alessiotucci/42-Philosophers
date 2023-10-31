@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:52:01 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 12:49:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 09:39:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	take_forks(t_plato *philo, int flag)
 		//my_get_time() - philo->table->time_of_start,
 		//check_table(philo->table), philo->alive, RESET);
 	if (check_table(philo->table) == 0
-		&& philo->alive == 1 && philo->philo_is_full == 0)
+		&& philo->alive == 1)// && philo->philo_is_full == 0)
 	{
 		if (check_table(philo->table) || philo->alive == 0)
 			return (1);
@@ -73,7 +73,7 @@ int	eats(t_plato *philo)
 //		my_get_time() - philo->table->time_of_start,
 //		check_table(philo->table), philo->alive, RESET);
 		if (!check_table(philo->table)
-			&& philo->alive == 1 && philo->philo_is_full == 0)
+			&& philo->alive == 1)// && philo->philo_is_full == 0)
 		{
 			if (take_forks(philo, 0))
 				return (1);

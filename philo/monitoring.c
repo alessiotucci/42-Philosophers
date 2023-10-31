@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 15:02:19 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 09:27:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	if (socratis->last_time_eat == 0 && socratis->is_eating == 0)
 	{
 		//edge case if I start checking before a philo has event started to eat;
-		usleep(socratis->time_to_die + 10);
+		usleep(10);
 		socratis->last_time_eat = 1;
 	}
-		//printf("%stime[%llu] >= last_eat_time[%zu]%s\n",
-		//YELLOW, time, socratis->last_time_eat, RESET);
+//printf("%stime[%llu] >= last_eat_time[%zu]%s\n",
+//YELLOW, time, socratis->last_time_eat, RESET);
 	if (time >= socratis->last_time_eat && socratis->is_eating == 0)
 	{
 		pthread_mutex_unlock(&socratis->eat_last_time);
-		printf("%llu\t", my_get_time() - table->time_of_start);
-		printf("%stime:%llu >= lst_eatime[%zu]%s\n", RED, time,
-			socratis->last_time_eat, RESET);
+//		printf("%llu\t", my_get_time() - table->time_of_start);
+//		printf("%stime:%llu >= lst_eatime[%zu]%s\n", RED, time,
+//		socratis->last_time_eat, RESET);
 		pthread_mutex_lock(&table->lock_table);
 		table->someone_is_dead = 1;
 		dying(socratis);
@@ -107,20 +107,16 @@ void	*monitoring(void *param)
 
 	table = (t_table *) param;
 	philos = table->array_of_philos;
-	t = philos[0].time_to_die / 2;// this value is bogus
+	t = 250 ;// this value is bogus
 	count = 0;
 	my_usleep(t);
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
 	// main while cicle, 	if someone is dead 	if the simulation is finished
 //		pthread_mutex_lock(&table->lock_table);
 	while (!check_table(table) && table->enough_is_enough <= table->array_size)
-		// this condition will be changed in the future
 	{
-//		pthread_mutex_unlock(&table->lock_table);
 		check_for_death(table, &philos[count]);
 		if (table->meals_to_eat != 0)
-			// if given amout of meals, check them,
-			// otherwise just check for death;
 			check_if_full(table, &philos[count]);
 		if (table->enough_is_enough >= table->array_size)
 			break ;
@@ -129,8 +125,8 @@ void	*monitoring(void *param)
 		else
 			count = 0;
 		if (t <= 1)
-			t = philos[0].time_to_die / 2;
-		my_usleep(t--);
+			t = 100;
+				my_usleep(t--);
 	}
 //	printf("%sthe monitor thread is finished%s\n", BG_RED, BG_RESET);
 	return (NULL);

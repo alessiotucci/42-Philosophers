@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 12:31:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 09:37:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	*routing(void *argum)
 		if (the_table->enough_is_enough >= the_table->array_size)
 			break ;
 		if (thinks(philosopo))
+			break ;
+		if (the_table->enough_is_enough >= the_table->array_size)
 			break ;
 	}
 	return (NULL);
