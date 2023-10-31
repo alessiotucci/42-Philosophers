@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/31 09:27:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 10:08:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	check_for_death(t_table *table, t_plato *socratis)
 	if (socratis->last_time_eat == 0 && socratis->is_eating == 0)
 	{
 		//edge case if I start checking before a philo has event started to eat;
-		usleep(10);
+		usleep(table->time_to_die / 2);
 		socratis->last_time_eat = 1;
 	}
 //printf("%stime[%llu] >= last_eat_time[%zu]%s\n",
@@ -107,7 +107,7 @@ void	*monitoring(void *param)
 
 	table = (t_table *) param;
 	philos = table->array_of_philos;
-	t = 250 ;// this value is bogus
+	t = table->time_to_die;// this value is bogus
 	count = 0;
 	my_usleep(t);
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
@@ -125,8 +125,9 @@ void	*monitoring(void *param)
 		else
 			count = 0;
 		if (t <= 1)
-			t = 100;
-				my_usleep(t--);
+			t = 50;
+		t -= 10;
+				my_usleep(t);
 	}
 //	printf("%sthe monitor thread is finished%s\n", BG_RED, BG_RESET);
 	return (NULL);

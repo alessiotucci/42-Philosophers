@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:41:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/31 09:37:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 10:03:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,21 @@ void	start_routine(t_table *the_table, int how_many)
 {
 	int		count;
 	t_plato	*the_array;
+	bool		flag;
 
+	flag = true;
 	the_table->time_of_start = my_get_time();
 	the_array = the_table->array_of_philos;
 	printf("\n-\t--\t\n%s%s---\tstarting of the simulation---%s%s\t\n\n\n\n", YELLOW, BG_RED, BG_RESET, RESET);
-	pthread_create(&the_table->monitor, NULL, monitoring, the_table);
+	//pthread_create(&the_table->monitor, NULL, monitoring, the_table);
 	count = 0;
 	while (count < how_many)
 	{
+		if (flag == true)
+		{
+			pthread_create(&the_table->monitor, NULL, monitoring, the_table);
+			flag = false;
+		}
 		pthread_create(&the_array[count].thread, NULL, routing, &the_array[count]);
 		my_usleep(1); // start working over there
 		count++;
