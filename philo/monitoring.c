@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/31 10:08:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/31 19:53:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	*monitoring(void *param)
 
 	table = (t_table *) param;
 	philos = table->array_of_philos;
-	t = table->time_to_die;// this value is bogus
+	t = table->time_to_die / 2;// this value is bogus
 	count = 0;
 	my_usleep(t);
 //	printf("MONITOR THREAD HAS STARTED\ntime[%llu]\n", my_get_time());
