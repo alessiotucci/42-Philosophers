@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 16:25:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 18:09:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ int	lay_the_table(t_input *param, t_table *new_table)
 		printf("memory allocation failed\n");
 		exit(0);
 	}
+	printf("checking the input\n");
+	if (check_input(param) != 0)
+		return (1);
 	new_table->meals_to_eat = param->often_eat;
 	new_table->array_size = param->how_many;
 	new_table->time_to_eat = param->time_to_eat;
@@ -99,6 +102,6 @@ int	lay_the_table(t_input *param, t_table *new_table)
 	new_table->enough_is_enough = 0;
 	set_table_mutexes(new_table);
 	create_name_philos(new_table);
-	start_routine(new_table, new_table->array_size);
+//	start_routine(new_table, new_table->array_size);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 16:14:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 18:18:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,30 @@ int	main(int ac, char *av[])
 	int		count;
 	t_input	test;
 	t_table	nice_table;
+	int	flag;
 
+	flag = 0;
 	count = 1;
 	if (ac < 5 || ac > 6)
 		return (printf("%s Wrong input %s\n", RED, RESET));
 	while (count <= 5)
+	{
 		if (av[count])
-			(check_for_digits(av[count++]));
-	parsing_argus(&test, av);
+			(check_for_digits(av[count]));
+		count++;
+	}
+		parsing_argus(&test, av);
 	if (av[5])
+	{
 		test.often_eat = ft_atoi_plus(av[5]);
-	else
+		flag = 1;
+	}
+		else
 		test.often_eat = 0;
+	print_struct(&test, flag);
 	lay_the_table(&test, &nice_table);
+	print_table(&nice_table);
+	printf("freeing all\n");
 	free_all(&nice_table);
 	return (0);
 }

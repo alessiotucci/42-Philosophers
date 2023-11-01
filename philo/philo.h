@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 15:26:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 17:44:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void		print_exit(int p);
 /* Action of the routine*/
 int			eats(t_plato *philo);
 u_int64_t	console_write(t_table *table, int name, char *message, char *color);
-
+int	check_input(t_input *phil);
 /*useful function to monitor the death*/
 int			check_table(t_table *table_to_check);
 #endif

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 16:20:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 18:03:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ u_int64_t	console_write(t_table *table, int name, char *message, char *color)
 }
 
 /* static function to check for inputs*/
-static int	check_input(t_input *phil)
+int	check_input(t_input *input)
 {
-	if (phil->how_many < 0)
-		return (printf("%sPhilosopher cannot be less than zero%s", RED, RESET));
-	if (phil->time_to_die < 0)
+	if (input->how_many <= 0)
+		return (printf("%sPhilo cant be less than zero%s\n", RED, RESET));
+	if (input->time_to_die <= 0)
 		return (printf("%sTime to die is negative%s\n", RED, RESET));
-	if (phil->time_to_eat < 0)
+	if (input->time_to_eat <= 0)
 		return (printf("%sTime to eat is negative%s\n", RED, RESET));
-	if (phil->time_to_sleep < 0)
+	if (input->time_to_sleep <= 0)
 		return (printf("%sTime to sleep is negative%s\n", RED, RESET));
+	if (input->often_eat < 0)
+		return (printf("%sMeals is negative%s\n", RED, RESET));
 	printf("%sThe input has been checked%s\n", GREEN, RESET);
 	return (0);
 }
