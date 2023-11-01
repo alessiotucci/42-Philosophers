@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 15:31:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:25:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	set_table_mutexes(t_table *new_table)
 	int	count;
 
 	count = 0;
-	printf("setting the mutexed\n");
+	printf("\n\n\n");
 	while (count < new_table->array_size)
 	{
 		pthread_mutex_init(&new_table->few_forks[count], NULL);
@@ -86,9 +86,10 @@ int	lay_the_table(t_input *param, t_table *new_table)
 		malloc(sizeof(t_plato) * param->how_many);
 	new_table->few_forks = malloc(sizeof(pthread_mutex_t) * param->how_many);
 	if (new_table->array_of_philos == NULL)
+	{
 		printf("memory allocation failed\n");
-	else
-		printf("%spassing to the naming function%s\n", GREEN, RESET);
+		exit(0);
+	}
 	new_table->meals_to_eat = param->often_eat;
 	new_table->array_size = param->how_many;
 	new_table->time_to_eat = param->time_to_eat;
