@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:48:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:12:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	*monitoring(void *param)
 	t = table->time_to_die;
 	count = 0;
 	my_usleep(t);
-	printf("start monitoring\n");
 	while (!check_table(table) && table->enough_is_enough <= table->array_size)
 	{
 		check_for_death(table, &table->array_of_philos[count]);
@@ -96,6 +95,5 @@ void	*monitoring(void *param)
 			t = 50;
 		my_usleep(t -= 10);
 	}
-	printf("finishing monitoring\n");
 	return (NULL);
 }
