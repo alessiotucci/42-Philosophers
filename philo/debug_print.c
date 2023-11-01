@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 16:17:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:20:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ u_int64_t	console_write(t_table *table, int name, char *message, char *color)
 
 	time = my_get_time() - table->time_of_start;
 	pthread_mutex_lock(&table->writing);
-	printf("%lu %d %s%s%s\n", time, name, color, message, RESET);
+	printf("%llu %d %s%s%s\n", time, name, color, message, RESET);
 	pthread_mutex_unlock(&table->writing);
 	return (my_get_time());
 }
