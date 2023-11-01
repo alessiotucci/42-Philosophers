@@ -6,13 +6,13 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 10:58:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 15:31:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	create_name_philos(t_table *new_table)
+static int	create_name_philos(t_table *new_table)
 {
 	int	c;
 
@@ -71,10 +71,19 @@ static void	set_table_mutexes(t_table *new_table)
 	assign_forks_to_philos(new_table);
 }
 
+/*   Function to free most of the stuff*/
+void	free_all(t_table *old_table)
+{
+	free(old_table->few_forks);
+	free(old_table->array_of_philos);
+	return ;
+}
+
 /* Laying the table means get the struct table ready */
 int	lay_the_table(t_input *param, t_table *new_table)
 {
-	new_table->array_of_philos= (t_plato *)malloc(sizeof(t_plato) * param->how_many);
+	new_table->array_of_philos = (t_plato *)
+		malloc(sizeof(t_plato) * param->how_many);
 	new_table->few_forks = malloc(sizeof(pthread_mutex_t) * param->how_many);
 	if (new_table->array_of_philos == NULL)
 		printf("memory allocation failed\n");
@@ -89,5 +98,6 @@ int	lay_the_table(t_input *param, t_table *new_table)
 	new_table->enough_is_enough = 0;
 	set_table_mutexes(new_table);
 	create_name_philos(new_table);
+	start_routine(new_table, new_table->array_size);
 	return (0);
 }

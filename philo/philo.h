@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 11:41:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 15:26:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ u_int64_t	my_get_time(void);
 
 /* lay the tables means gathering data off all the philos and forks*/
 int			lay_the_table(t_input *params, t_table *new_table);
-int			create_name_philos(t_table *new_table);
 
 /* this function is for printing debugg*/
 void		print_struct(t_input *commmand, int flag);
@@ -120,15 +119,11 @@ void		print_table(t_table *new_table);
 void		parsing_argus(t_input *params, char *av[]);
 void		start_routine(t_table *the_table, int how_many);
 void		*routing(void *argum);
-
-/* let try to be leaks free*/
 void		free_all(t_table *old_table);
 void		*monitoring(void *argum);
-
+void		print_exit(int p);
 /* Action of the routine*/
 int			eats(t_plato *philo);
-int			thinks(t_plato *philo);
-int			sleeps(t_plato *philo);
 u_int64_t	console_write(t_table *table, int name, char *message, char *color);
 
 /*useful function to monitor the death*/

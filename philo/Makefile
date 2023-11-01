@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 11:09:19 by atucci            #+#    #+#              #
-#    Updated: 2023/10/25 10:40:59 by atucci           ###   ########.fr        #
+#    Updated: 2023/11/01 15:27:41 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = ./philosopher.c \
 						./routine.c \
 						./monitoring.c \
 						./actions_of_routine.c \
+						./helper.c \
 #------------------------------------------------------------------------------
 # Setting the variables object to a list of object neede to build from the src
 OBJS = $(SRC:.c=.o)

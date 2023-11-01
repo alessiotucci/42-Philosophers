@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:43:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 11:21:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 15:25:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-/*   Function to free most of the stuff*/
-void	free_all(t_table *old_table)
-{
-	free(old_table->array_of_philos);
-	return ;
-}
 
 int	ft_isdigit(int argum)
 {
@@ -49,10 +42,7 @@ long	ft_atoi_plus(const char *s)
 		i++;
 	}
 	if ((sign * num) > INT_MAX || (sign * num) < INT_MIN)
-	{
-		printf("%sMAX INT OR MIN INT alert! be carefully%s", RED, RESET);
-		exit(0);
-	}
+		print_exit(0);
 	return (sign * num);
 }
 
@@ -88,5 +78,3 @@ void	parsing_argus(t_input *params, char *av[])
 	params->time_to_eat = ft_atoi_plus(av[3]);
 	params->time_to_sleep = ft_atoi_plus(av[4]);
 }
-
-/*THIS FILE ALREADY HAS 5 FUNCTIONS*/

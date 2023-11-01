@@ -6,11 +6,24 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/30 11:23:07 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 15:32:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/*	1 means alive
+	 0 means death 	
+ */
+int	check_table(t_table *table_to_check)
+{
+	int	result;
+
+	pthread_mutex_lock(&table_to_check->lock_table);
+	result = table_to_check->someone_is_dead;
+	pthread_mutex_unlock(&table_to_check->lock_table);
+	return (result);
+}
 
 static int	check_for_digits(char *str)
 {
@@ -41,11 +54,8 @@ int	main(int ac, char *av[])
 	if (ac < 5 || ac > 6)
 		return (printf("%s Wrong input %s\n", RED, RESET));
 	while (count <= 5)
-	{
 		if (av[count])
-			(check_for_digits(av[count]));
-		count++;
-	}
+			(check_for_digits(av[count++]));
 	parsing_argus(&test, av);
 	if (av[5])
 	{
@@ -54,9 +64,10 @@ int	main(int ac, char *av[])
 	}
 	else
 		test.often_eat = 0;
-	print_struct(&test, flag);
 	lay_the_table(&test, &nice_table);
-	print_table(&nice_table);
 	free_all(&nice_table);
 	return (0);
 }
+
+/*print struct to check the struct */
+/*print table with nice table */

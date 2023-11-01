@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:20:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 11:37:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 14:35:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,17 @@ void	print_table(t_table *new_table)
 	int	c;
 
 	c = 0;
-	printf("\n\n-----------NEW TABLE -------------\n");
-	printf("|%sTable size [%d] philo%s|\n", BG_GREEN, new_table->array_size, BG_RESET);
+	printf("\n\n---NEW TABLE ---\n");
+	printf("|%sTable size [%d] philo%s|\n", BG_GREEN,
+		new_table->array_size, BG_RESET);
 	while (c < new_table->array_size)
 	{
-		if (c % 2)
-			printf("\n|%s* Philospher Name: %d*|%s\n", CYAN, new_table->array_of_philos[c].name, RESET);
-		else
-			printf("\n|%s**** Philospher Name: %d ********|%s\n", YELLOW, new_table->array_of_philos[c].name, RESET);
-		printf("|\tPhilo meal eaten->%d\t|\n", new_table->array_of_philos[c].meal_eaten);
-		printf("|\tPhilo die in %zums\t|\n", new_table->array_of_philos[c].time_to_die);
-		printf("|\tPhilo eat%zums\t|\n", new_table->array_of_philos[c].time_to_eat);
-		printf("|\tPhilo sleep%zums\t|\n", new_table->array_of_philos[c].time_to_sleep);
-		printf("|\tPhilo has to eat %d meals\t|\n", new_table->meals_to_eat);
+		printf("PhiloName %d\n", new_table->array_of_philos[c].name);
+		printf("meal eaten->%d\t|\n", new_table->array_of_philos[c].meal_eaten);
+		printf("die in %zums\t|\n", new_table->array_of_philos[c].time_to_die);
+		printf("eat%zums\t|\n", new_table->array_of_philos[c].time_to_eat);
+		printf("sleep%zums\t|\n", new_table->array_of_philos[c].time_to_sleep);
+		printf("thas to eat %d meal\t|\n", new_table->meals_to_eat);
 		c++;
 	}
 	start_routine(new_table, new_table->array_size);
