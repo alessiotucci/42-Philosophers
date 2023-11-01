@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:14:08 by atucci            #+#    #+#             */
-/*   Updated: 2023/11/01 15:46:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:14:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ int	main(int ac, char *av[])
 {
 	int		count;
 	t_input	test;
-	int		flag;
 	t_table	nice_table;
 
-	flag = 0;
 	count = 1;
 	if (ac < 5 || ac > 6)
 		return (printf("%s Wrong input %s\n", RED, RESET));
@@ -58,10 +56,7 @@ int	main(int ac, char *av[])
 			(check_for_digits(av[count++]));
 	parsing_argus(&test, av);
 	if (av[5])
-	{
 		test.often_eat = ft_atoi_plus(av[5]);
-		flag = 1;
-	}
 	else
 		test.often_eat = 0;
 	lay_the_table(&test, &nice_table);
