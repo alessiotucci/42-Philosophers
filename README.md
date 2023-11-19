@@ -1,6 +1,9 @@
 # 42-Philosophers
 The Dining Philosopher Problem states that K philosophers are seated around a circular table with one chopstick between each pair of philosophers. There is one chopstick between each philosopher. A philosopher may eat if he can pick up the two chopsticks adjacent to him.
 
+# My approach
+I have decided to create a single thread for each philospher and then create a monitor thread to monitor them. I will explain how it works...
+
   ### useful resources 
 | STEP TO TAKE                                | video                                             |
 | --------------------------------------------| ------------------------------------------------- |
