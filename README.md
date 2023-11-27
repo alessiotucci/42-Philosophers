@@ -3,6 +3,8 @@ The Dining Philosopher Problem states that K philosophers are seated around a ci
 
 # My approach
 I have decided to create a single thread for each philospher and then create a monitor thread to monitor them. I will explain how it works...
+On the table I have few philosopher and few forks, shared among philos, then there is a single thread that monitor each philosopher, for this reason the total number of thread will be n of philo + 1. 
+With the other approach you will have 2x more thread, (if each philo has a thread to monitor himself).
 
   ### useful resources 
 | STEP TO TAKE                                | video                                             |
