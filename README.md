@@ -72,6 +72,7 @@ This conversion is often used when working with time-related data in C, as it al
 | pthread_mutex_lock         | pthread.h                | int pthread_mutex_lock(pthread_mutex_t *mutex); |
 | pthread_mutex_unlock       | pthread.h                | int pthread_mutex_unlock(pthread_mutex_t *mutex); |
 
+I had to watch few videos before fully understanding the mutex concept, after that I had to syncronize the philosopher, to do so I added a very short delay when I create and set the threads
 
 # Bonus part
 
@@ -96,6 +97,7 @@ This conversion is often used when working with time-related data in C, as it al
 
 
 <img width="438" alt="image" src="https://github.com/alessiotucci/42-Philosophers/assets/116757689/5558e409-e85e-4fcc-9508-6b319d91099d">
+The tester above doens't work vey well, So I was thinking about make my own in the perl programming language.
 
 
 
