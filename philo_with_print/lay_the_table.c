@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:58:14 by atucci            #+#    #+#             */
-/*   Updated: 2023/12/30 13:31:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/11/01 18:28:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	lay_the_table(t_input *param, t_table *new_table)
 		printf("memory allocation failed\n");
 		exit(0);
 	}
+	printf("checking the input\n");
 	if (check_input(param) != 0)
 		return (1);
 	new_table->meals_to_eat = param->often_eat;
