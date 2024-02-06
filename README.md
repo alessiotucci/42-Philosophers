@@ -1,6 +1,10 @@
 # 42-Philosophers
 The Dining Philosopher Problem states that K philosophers are seated around a circular table with one chopstick between each pair of philosophers. There is one chopstick between each philosopher. A philosopher may eat if he can pick up the two chopsticks adjacent to him.
 
+# this project should have been failed for FORBIDDEN FUNCTION ❌
+I used the exit() function in the error handling and it was not allowed 😣
+
+
 # My approach
 I have decided to create a single thread for each philospher and then create a monitor thread to monitor them. I will explain how it works...
 On the table I have few philosopher and few forks, shared among philos, then there is a single thread that monitor each philosopher, for this reason the total number of thread will be n of philo + 1. 
